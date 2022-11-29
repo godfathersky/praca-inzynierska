@@ -1,9 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+/* font-family: 'Roboto', sans-serif; */
+
 :root{
+    font-size: 14px;
     --black: #000000;
     --white: #ffffff;
+    --red-danger: #cc0000;
+    --red-danger-hover: #ff0000;
+    --grey-footer: #bebebe;
+    --black-alpha: #00000080;
+    --green-btn: #008000;
+    --blue-btn: #0000ff;
+    --green-yellow-btn: #adff2f;
+    --blue-violet-btn: #8a2be2;
 }
 
 body{
     margin: auto;
     padding: 0;
+    background-image: url("./image/network-g25a8d2933_1920.jpg");
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.log-reg-box{
+    width: 15vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-box, .reg-box{
+    display: flex;
+    justify-content: center;
+    width: 12vw;
+    height: 7vh;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    width: 20vw;
+    height: 10vh;
+}
+
+/* Delete span style after create App logo */
+header span{
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.log-btn, .reg-btn{
+    font-weight: bold;
+    border-radius: .5vw;
+}
+
+.log-btn{
+    width: 10vw;
+    height: 5vh;
+    background-color: var(--green-btn);
+    color: var(--white);
+    border: none;
+    transition-duration: 500ms;
+}
+
+.log-btn:hover{
+    background-color: var(--green-yellow-btn);
+    color: var(--black);
+    width: 11vw;
+    height: 6vh;
+}
+
+.reg-btn{
+    width: 10vw;
+    height: 5vh;
+    background-color: var(--blue-btn);
+    color: var(--white);
+    border: none;
+    transition-duration: 500ms;
+}
+
+.reg-btn:hover{
+    background-color: var(--blue-violet-btn);
+    color: var(--black);
+    width: 11vw;
+    height: 6vh;  
+}
+
+#login-form{
+    position: absolute;
+    width: 30vw;
+    height: 30vh;
+    flex-direction: column;
+    background-color: var(--white);
+}
+
+.display-none{
+    display: none;
+}
+
+.display{
+    display: flex;
+}
+
+.login-form-body{
+    display: flex;
+    width: 30vw;
+    height: 25vh;
+    justify-content: center;
+}
+
+.login-form-footer{
+    position: absolute;
+    bottom: 0;
+    width: 30vw;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--grey-footer);
+}
+
+.form-content{
+    width: 30vw;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.username-label, .password-label{
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-bottom: .5vh;
+}
+
+.password-label{
+    padding-top: 1vh;
+}
+
+.username-input, .password-input{
+    width: 20vw;
+    height: 3vh;
+    font-size: 1.2rem;
+}
+
+.log-btn-form{
+    width: 5vw;
+    height: 3vh;
+    margin-top: 3vh;
+}
+
+.log-btn-cancel{
+    width: 5vw;
+    height: 3vh;
+    background-color: var(--red-danger);
+    border: none;
+}
+
+.log-btn-cancel:hover{
+    background-color: var(--red-danger-hover);
+}
+
+footer{
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--black-alpha);
+    color: var(--white);
+    position: absolute;
+    bottom: 0;
 }

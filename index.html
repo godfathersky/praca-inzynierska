@@ -9,6 +9,37 @@
     <title>Management App</title>
 </head>
 <body>
-    
+    <div class="log-reg-box">
+        <header>
+            <!-- Delete span after create App logo -->
+            <span>App logo</span>
+            <!-- <img src="" alt="App logo"> -->
+        </header>
+        <div class="log-box">
+            <button class="log-btn">Sign in</button>
+        </div>
+        <div class="reg-box">
+            <button class="reg-btn">Sign up</button>
+        </div>
+    </div>
+    <div id="login-form" class="display-none">
+        <form action="" method="post" class="login-form-body">
+            <div class="form-content">
+                <label for="username" class="username-label">Username</label>
+                <input type="text" name="username" placeholder="Enter username" class="username-input" required>
+                <label for="username" class="password-label">Password</label>
+                <input type="password" name="password" placeholder="Enter password" class="password-input" required>
+                <button type="submit" class="log-btn-form">Login</button>
+            </div>
+        </form>
+        <div class="login-form-footer">
+            <button type="button" class="log-btn-cancel">Cancel</button>
+            <span>Forgot <a href="#">password</a>?</span>
+        </div>
+    </div>
+    <footer>
+        <span>Akademia im. Jakuba z Paradyża w Gorzowie Wlkp.</span>
+        <span>Robert Zima &copy; 2022</span>
+    </footer>
 </body>
 </html>

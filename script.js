@@ -3,12 +3,11 @@ document.addEventListener("DOMContentLoaded", e => {
     //var btnRegister = document.querySelector(".reg-btn");
     var btnLoginCancel = document.querySelector('.log-btn-cancel');
     var loginForm = document.getElementById('login-form');
-    var loginFormIsValid = document.getElementById('login-form').classList;
+    // var loginFormIsValid = document.getElementById('login-form');
 
     function loginUser(){
         btnLogin.addEventListener("click", login => {
-            loginForm.classList.remove("display-none");
-            loginForm.classList.add("display");
+            loginForm.style.display="flex";
             console.log("login");
         })
     }
@@ -16,19 +15,11 @@ document.addEventListener("DOMContentLoaded", e => {
 
     function cancelLoginUser(){
         btnLoginCancel.addEventListener("click", cancel => {
-            loginForm.classList.remove("display");
-            loginForm.classList.add("display-none");
+            loginForm.style.display="none";
             console.log("cancel login");
         })
     }
     cancelLoginUser();
-
-    // if(loginFormIsValid=="display-none"){
-    //     loginUser();
-    // }
-    // else if(loginFormIsValid=="display"){
-    //     cancelLoginUser();
-    // };
 
     // btnRegister.addEventListener("click", e=>{
     //     console.log("register");

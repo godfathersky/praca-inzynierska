@@ -96,19 +96,12 @@ header span{
 }
 
 #login-form{
+    display: none;
     position: absolute;
     width: 30vw;
     height: 30vh;
     flex-direction: column;
     background-color: var(--white);
-}
-
-.display-none{
-    display: none;
-}
-
-.display{
-    display: flex;
 }
 
 .login-form-body{
@@ -148,9 +141,11 @@ header span{
     padding-top: 1vh;
 }
 
-.username-input, .password-input{
+input[type=text], input[type=password]{
     width: 20vw;
     height: 3vh;
+    padding: .2vh .2vw;
+    margin: .2vh .2vw;
     font-size: 1.2rem;
 }
 

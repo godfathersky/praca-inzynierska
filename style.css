@@ -102,6 +102,7 @@ header span{
     height: 30vh;
     flex-direction: column;
     background-color: var(--white);
+    border-radius: .5vw;
 }
 
 .login-form-body{
@@ -120,33 +121,17 @@ header span{
     justify-content: space-around;
     align-items: center;
     background-color: var(--grey-footer);
+    border-bottom-left-radius: .5vw;
+    border-bottom-right-radius: .5vw;
 }
 
-.form-content{
+.login-form-content{
     width: 30vw;
     height: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.username-label, .password-label{
-    font-weight: bold;
-    font-size: 1.2rem;
-    padding-bottom: .5vh;
-}
-
-.password-label{
-    padding-top: 1vh;
-}
-
-input[type=text], input[type=password]{
-    width: 20vw;
-    height: 3vh;
-    padding: .2vh .2vw;
-    margin: .2vh .2vw;
-    font-size: 1.2rem;
 }
 
 .log-btn-form{
@@ -164,6 +149,80 @@ input[type=text], input[type=password]{
 
 .log-btn-cancel:hover{
     background-color: var(--red-danger-hover);
+}
+
+#register-form{
+    display: none;
+    position: absolute;
+    width: 30vw;
+    height: 45vh;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: .5vw;
+}
+
+.register-form-body{
+    display: flex;
+    width: 30vw;
+    height: 40vh;
+    justify-content: center;
+}
+
+.register-form-footer{
+    position: absolute;
+    bottom: 0;
+    width: 30vw;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--grey-footer);
+    border-bottom-left-radius: .5vw;
+    border-bottom-right-radius: .5vw;
+}
+
+.register-form-content{
+    width: 30vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reg-btn-form{
+    width: 5vw;
+    height: 3vh;
+    margin-top: 3vh;
+}
+
+.reg-btn-cancel{
+    width: 5vw;
+    height: 3vh;
+    background-color: var(--red-danger);
+    border: none;
+}
+
+.reg-btn-cancel:hover{
+    background-color: var(--red-danger-hover);
+}
+
+.username-label, .password-label, .email-label{
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-bottom: .5vh;
+}
+
+.password-label{
+    padding-top: 1vh;
+}
+
+input[type=text], input[type=password], input[type="email"]{
+    width: 20vw;
+    height: 3vh;
+    padding: .2vh .2vw;
+    margin: .2vh .2vw;
+    font-size: 1.2rem;
 }
 
 footer{

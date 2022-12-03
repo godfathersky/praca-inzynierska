@@ -71,3 +71,7 @@
     </footer>
 </body>
 </html>
+
+<?php
+
+?>

@@ -4,14 +4,15 @@
 :root{
     font-size: 14px;
     --black: #000000;
+    --black-alpha: #00000080;
     --white: #ffffff;
+    --white-alpha: #ffffff75;
+    --grey-footer: #bebebe;
     --red-danger: #cc0000;
     --red-danger-hover: #ff0000;
-    --grey-footer: #bebebe;
-    --black-alpha: #00000080;
     --green-btn: #008000;
-    --blue-btn: #0000ff;
     --green-yellow-btn: #adff2f;
+    --blue-btn: #0000ff;
     --blue-violet-btn: #8a2be2;
 }
 
@@ -29,12 +30,20 @@ body{
 }
 
 .log-reg-box{
-    width: 15vw;
-    height: 30vh;
+    width: 40vw;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+    height: 25vh;
+    padding-bottom: 5vh;
 }
 
 .log-box, .reg-box{
@@ -42,20 +51,6 @@ body{
     justify-content: center;
     width: 12vw;
     height: 7vh;
-}
-
-header{
-    display: flex;
-    justify-content: center;
-    width: 20vw;
-    height: 10vh;
-}
-
-/* Delete span style after create App logo */
-header span{
-    color: var(--white);
-    font-size: 3rem;
-    font-weight: 700;
 }
 
 .log-btn, .reg-btn{
@@ -66,15 +61,15 @@ header span{
 .log-btn{
     width: 10vw;
     height: 5vh;
-    background-color: var(--green-btn);
+    background-color: var(--black-alpha);
     color: var(--white);
     border: none;
     transition-duration: 500ms;
 }
 
 .log-btn:hover{
-    background-color: var(--green-yellow-btn);
-    color: var(--black);
+    background-color: var(--black);
+    color: var(--white);
     width: 11vw;
     height: 6vh;
 }
@@ -82,14 +77,14 @@ header span{
 .reg-btn{
     width: 10vw;
     height: 5vh;
-    background-color: var(--blue-btn);
-    color: var(--white);
+    background-color: var(--white-alpha);
+    color: var(--black);
     border: none;
     transition-duration: 500ms;
 }
 
 .reg-btn:hover{
-    background-color: var(--blue-violet-btn);
+    background-color: var(--white);
     color: var(--black);
     width: 11vw;
     height: 6vh;  

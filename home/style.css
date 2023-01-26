@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+@import url('https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css');
+/* font-family: 'Roboto', sans-serif; */
+
+:root{
+    font-size: 14px;
+    --black: #000000;
+    --black-alpha: #00000080;
+    --white: #ffffff;
+    --white-alpha: #ffffff75;
+    --grey-footer: #bebebe;
+    --red-danger: #cc0000;
+    --red-danger-hover: #ff0000;
+    --green-btn: #008000;
+    --green-yellow-btn: #adff2f;
+    --blue-btn: #0000ff;
+    --blue-violet-btn: #8a2be2;
+}
+
+body{
+    margin: auto;
+    padding: 0;
+    background-image: url("/img/network-g25a8d2933_1920.jpg");
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 8vh;
+    padding: 2vh 0vw;
+    background-color: var(--black-alpha);
+    margin-bottom: 2vh;
+    color: var(--black);
+}
+.nav-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12vw;
+    height: 6vh;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    background-color: var(--white);
+    transition-duration: 300ms;
+}
+
+.nav-item a, .nav-item:visited{
+    text-decoration: none;
+    color: var(--black);
+}
+
+.nav-item a i{
+    padding-right: .2vw;
+    vertical-align: middle;
+}
+
+.nav-item:hover, .nav-item:visited{
+    background-color: var(--black);
+
+}
+
+.slider-box{
+    display: flex;
+    width: 80vw;
+    height: 60vh;
+    background-color: var(--black);
+}
+
+.info-timeline-box{
+    display: grid;
+    width: 80vw;
+    height: 50vh;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25vh 25vh 25vh 25vh;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "timeline-item-1 ."
+      ". timeline-item-2"
+      "timeline-item-3 ."
+      ". timeline-item-4";
+}
+
+.info-timeline-box p{
+    text-align: justify;
+}
+  
+.timeline-item-1{
+    grid-area: timeline-item-1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.timeline-item-2{
+    grid-area: timeline-item-2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.timeline-item-3{
+    grid-area: timeline-item-3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.timeline-item-4{
+    grid-area: timeline-item-4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

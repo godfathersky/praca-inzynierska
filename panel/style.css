@@ -19,7 +19,7 @@
 body{
     margin: auto;
     padding: 0;
-    background-image: url("./image/network-g25a8d2933_1920.jpg");
+    background-image: url("/img/network-g25a8d2933_1920.jpg");
     width: 100vw;
     height: 100vh;
     display: flex;

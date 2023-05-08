@@ -10,15 +10,30 @@
     <title>Home</title>
 </head>
 <body>
+    <div class="min-reg-container" id="minRegContainer">
+        <span>Formularz rejestracji</span>
+        <div class="buttons">
+            <button id="maximizeRegBtn"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square min-arrow"></i></button>
+            <button id="minCloseRegBtn"><i class="fa-solid fa-xmark"></i></i></button>
+        </div>
+    </div>
+    <div class="min-log-container" id="minLogContainer">
+        <span>Formularz logowania</span>
+        <div class="buttons">
+            <button id="maximizeLogBtn"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square min-arrow"></i></button>
+            <button id="minCloseLogBtn"><i class="fa-solid fa-xmark"></i></i></button>
+        </div>
+    </div>
     <main>
         <img src="/img/text4254-4.png" alt="text4254-4.png">
         <h1>Witamy na stronie do zarządzania projektami/zadaniami.</h1>
         <h2>Jeśli nie posiadasz konta w aplikacji, zajerestruj się!</h2>
-        <button class="reg-btn" id="regBtn"><i class="fa-solid fa-user-plus" style="color: #000000;"></i>Rejestracja</button>
+        <button class="reg-btn" id="regBtn">Rejestracja<i class="fa-solid fa-user-plus" style="color: #000000;"></i></button>
         <h2>Posiadasz konto? Jeśli tak, zaloguj się!</h2>
-        <button class="log-btn" id="logBtn"><i class="fa-solid fa-key" style="color: #000000;"></i>Logowanie</button>
-
-        <div class="container" id="container">
+        <button class="log-btn" id="logBtn">Logowanie<i class="fa-solid fa-key" style="color: #000000;"></i></button>
+        <div class="reg-container" id="regContainer">
+            <button id="closeRegBtn">X</button>
+            <button id="minimizeRegBtn">_</button>
             <div class="register">
                 <div class="info">
                     <img src="/img/text4254-4.png" alt="text4254-4.png">
@@ -28,27 +43,53 @@
                     <div class="title">
                         <h1>Formularz rejestracji</h1>
                     </div>
-                    <div class="email">
+                    <div class="email-reg" id="emailRegContainer">
                         <label for="email">Adres email</label>
-                        <input type="email" name="email" id="" value="test@mail.com">
+                        <input type="email" name="email" id="emailRegInput">
                     </div>
-                    <div class="username">
+                    <div class="username-reg" id="usernameRegContainer">
                         <label for="username">Nazwa użytkownika</label>
-                        <input type="text" name="username" id="" value="username">
+                        <input type="text" name="username" id="usernameRegInput">
                     </div>
-                    <div class="password">
+                    <div class="password-reg" id="passwordRegContainer">
                         <label for="password">Hasło</label>
-                        <input type="password" name="password" id="">
+                        <input type="password" name="password" id="passwordRegInput">
                     </div>
-                    <div class="re-password">
+                    <div class="re-password-reg" id="rePasswordRegContainer">
                         <label for="re-password">Powtórz hasło</label>
-                        <input type="password" name="re-password" id="">
+                        <input type="password" name="re-password" id="rePasswordRegInput">
                     </div>
-                    <div class="buttons">
+                    <div class="buttons-reg">
                         <button type="submit">Zarejestruj</button>
                         <button type="reset">Wyczyść</button>
                     </div>
-                    <button id="closeBtn">X</button>
+                </form>
+            </div>
+        </div>
+        <div class="log-container" id="logContainer">
+            <button id="closeLogBtn">X</button>
+            <button id="minimizeLogBtn">_</button>
+            <div class="login">
+                <div class="info">
+                    <img src="/img/text4254-4.png" alt="text4254-4.png">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.</p>
+                </div>
+                <form action="">
+                    <div class="title">
+                        <h1>Formularz logowania</h1>
+                    </div>
+                    <div class="username-log" id="usernameLogContainer">
+                        <label for="username">Nazwa użytkownika</label>
+                        <input type="text" name="username" id="usernameLogInput">
+                    </div>
+                    <div class="password-log" id="passwordLoginContainer">
+                        <label for="password">Hasło</label>
+                        <input type="password" name="password" id="passwordLogInput">
+                    </div>
+                    <div class="buttons-log">
+                        <button type="submit">Zaloguj</button>
+                        <button type="reset">Wyczyść</button>
+                    </div>
                 </form>
             </div>
         </div>

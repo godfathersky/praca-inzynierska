@@ -25,6 +25,94 @@ body{
     overflow-x: hidden;
 }
 
+/* Minimalized register container */
+
+.min-reg-container{
+    width: 250px;
+    height: 30px;
+    background-color: grey;
+    display: none;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.min-reg-container span{
+    width: 190px;
+    text-align: center;
+}
+
+.min-reg-container .buttons{
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#maximizeRegBtn, #minCloseRegBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    border-left: 1px solid black;
+}
+
+#maximizeRegBtn:hover, #minCloseRegBtn:hover{
+    cursor: pointer;
+}
+
+/* end */
+
+/* Minimalized login container */
+
+.min-log-container{
+    width: 250px;
+    height: 30px;
+    background-color: grey;
+    display: none;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.min-log-container span{
+    width: 190px;
+    text-align: center;
+}
+
+.min-log-container .buttons{
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#maximizeLogBtn, #minCloseLogBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    border-left: 1px solid black;
+}
+
+#maximizeLogBtn:hover, #minCloseLogBtn:hover{
+    cursor: pointer;
+}
+
+/* end */
+
 main{
     width: 500px;
     height: 500px;
@@ -35,7 +123,7 @@ main{
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 25px grey, 0 0 15px lightblue;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--bg-color)
 }
 
 main h1, h2{
@@ -71,11 +159,12 @@ img{
 
 .fa-user-plus,
 .fa-key{
-    margin-right: 5px;
+    margin-left: 5px;
 }
 
 /* Register modal */
-.container{
+
+.reg-container{
     width: 900px;
     height: 600px;
     position: absolute;
@@ -124,17 +213,17 @@ form{
     text-align: center;
 }
 
-.email,
-.username,
-.password,
-.re-password{
+.email-reg,
+.username-reg,
+.password-reg,
+.re-password-reg{
     width: 300px;
     display: flex;
     flex-direction: column;
     border-bottom: 2px solid white;
 }
 
-.buttons{
+.buttons-reg{
     width: 300px;
     display: flex;
     justify-content: space-between;
@@ -166,16 +255,147 @@ input{
     background: transparent;
 }
 
-#closeBtn{
+#closeRegBtn{
     width: 40px;
-    height: 20px;
-    position: relative;
-    top: -543px;
-    right: -180px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
     border-top-right-radius: 10px;
+    background-color: red;
     border: none;
 }
 
-#closeBtn:hover{
+#minimizeRegBtn{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    border-bottom-left-radius: 10px;
+    border: none;
+}
+
+#closeRegBtn:hover, #minimizeRegBtn:hover{
     cursor: pointer;
 }
+
+/* end */
+
+/* Login modal */
+
+.log-container{
+    width: 900px;
+    height: 600px;
+    position: absolute;
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px grey;
+}
+
+.login{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.info img{
+    width: 400px;
+}
+
+form{
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: grey;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.title h1{
+    text-align: center;
+}
+
+.username-log,
+.password-log{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid white;
+}
+
+.buttons-log{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button[type="submit"],
+button[type="reset"]{
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+button[type="submit"]:hover,
+button[type="reset"]:hover{
+    cursor: pointer;
+}
+
+label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input{
+    width: 300px;
+    height: 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+#closeLogBtn{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 10px;
+    background-color: red;
+    border: none;
+}
+
+#minimizeLogBtn{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    border-bottom-left-radius: 10px;
+    border: none;
+}
+
+#closeLogBtn:hover, #minimizeLogBtn:hover{
+    cursor: pointer;
+}
+
+/* end */

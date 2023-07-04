@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/icon.png">
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    <script src="./register.js"></script>
     <script src="https://kit.fontawesome.com/093e9ed2f3.js" crossorigin="anonymous"></script>
     <title>Home</title>
 </head>
@@ -28,74 +29,13 @@
         <img src="/img/text4254-4.png" alt="text4254-4.png">
         <h1>Witamy na stronie do zarządzania projektami/zadaniami.</h1>
         <h2>Jeśli nie posiadasz konta w aplikacji, zajerestruj się!</h2>
-        <button class="reg-btn" id="regBtn">Rejestracja<i class="fa-solid fa-user-plus" style="color: #000000;"></i></button>
-        <h2>Posiadasz konto? Jeśli tak, zaloguj się!</h2>
-        <button class="log-btn" id="logBtn">Logowanie<i class="fa-solid fa-key" style="color: #000000;"></i></button>
-        <div class="reg-container" id="regContainer">
-            <button id="closeRegBtn">X</button>
-            <button id="minimizeRegBtn">_</button>
-            <div class="register">
-                <div class="info">
-                    <img src="/img/text4254-4.png" alt="text4254-4.png">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.</p>
-                </div>
-                <form action="">
-                    <div class="title">
-                        <h1>Formularz rejestracji</h1>
-                    </div>
-                    <div class="email-reg" id="emailRegContainer">
-                        <label for="email">Adres email</label>
-                        <input type="email" name="email" id="emailRegInput">
-                    </div>
-                    <div class="username-reg" id="usernameRegContainer">
-                        <label for="username">Nazwa użytkownika</label>
-                        <input type="text" name="username" id="usernameRegInput">
-                    </div>
-                    <div class="password-reg" id="passwordRegContainer">
-                        <label for="password">Hasło</label>
-                        <input type="password" name="password" id="passwordRegInput">
-                    </div>
-                    <div class="re-password-reg" id="rePasswordRegContainer">
-                        <label for="re-password">Powtórz hasło</label>
-                        <input type="password" name="re-password" id="rePasswordRegInput">
-                    </div>
-                    <div class="buttons-reg">
-                        <button type="submit">Zarejestruj</button>
-                        <button type="reset">Wyczyść</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="log-container" id="logContainer">
-            <button id="closeLogBtn">X</button>
-            <button id="minimizeLogBtn">_</button>
-            <div class="login">
-                <div class="info">
-                    <img src="/img/text4254-4.png" alt="text4254-4.png">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.</p>
-                </div>
-                <form action="">
-                    <div class="title">
-                        <h1>Formularz logowania</h1>
-                    </div>
-                    <div class="username-log" id="usernameLogContainer">
-                        <label for="username">Nazwa użytkownika</label>
-                        <input type="text" name="username" id="usernameLogInput">
-                    </div>
-                    <div class="password-log" id="passwordLoginContainer">
-                        <label for="password">Hasło</label>
-                        <input type="password" name="password" id="passwordLogInput">
-                    </div>
-                    <div class="buttons-log">
-                        <button type="submit">Zaloguj</button>
-                        <button type="reset">Wyczyść</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <button class="reg-btn" id="showRegBtn">Rejestracja<i class="fa-solid fa-user-plus" style="color: #000000;"></i></button>
+        <h2>Posiadasz konto? Zaloguj się!</h2>
+        <button class="log-btn" id="showLogBtn">Logowanie<i class="fa-solid fa-key" style="color: #000000;"></i></button>
     </main>
     <footer>
 
     </footer>
+    <script src="./login.js" defer></script>
 </body>
 </html>

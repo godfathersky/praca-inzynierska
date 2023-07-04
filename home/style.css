@@ -25,94 +25,6 @@ body{
     overflow-x: hidden;
 }
 
-/* Minimalized register container */
-
-.min-reg-container{
-    width: 250px;
-    height: 30px;
-    background-color: grey;
-    display: none;
-    align-items: center;
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-}
-
-.min-reg-container span{
-    width: 190px;
-    text-align: center;
-}
-
-.min-reg-container .buttons{
-    width: 60px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#maximizeRegBtn, #minCloseRegBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: none;
-    outline: none;
-    background-color: white;
-    color: black;
-    border-left: 1px solid black;
-}
-
-#maximizeRegBtn:hover, #minCloseRegBtn:hover{
-    cursor: pointer;
-}
-
-/* end */
-
-/* Minimalized login container */
-
-.min-log-container{
-    width: 250px;
-    height: 30px;
-    background-color: grey;
-    display: none;
-    align-items: center;
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-}
-
-.min-log-container span{
-    width: 190px;
-    text-align: center;
-}
-
-.min-log-container .buttons{
-    width: 60px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#maximizeLogBtn, #minCloseLogBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: none;
-    outline: none;
-    background-color: white;
-    color: black;
-    border-left: 1px solid black;
-}
-
-#maximizeLogBtn:hover, #minCloseLogBtn:hover{
-    cursor: pointer;
-}
-
-/* end */
-
 main{
     width: 500px;
     height: 500px;
@@ -161,6 +73,47 @@ img{
 .fa-key{
     margin-left: 5px;
 }
+
+/* Media queries */
+
+@media (max-width: 479px){
+    main{
+        width: 100px;
+        height: 100px;
+    }
+}
+  
+@media (min-width: 480px) and (max-width: 959px){
+
+}
+  
+@media (min-width: 960px){
+
+}
+
+/* end */
+
+/* Labels & Inputs */
+
+label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input:not([type="checkbox"]){
+    width: 300px;
+    height: 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+#checkConditionInput{
+    width: 40px;
+    height: 40px;
+}
+
+/* end */
 
 /* Register modal */
 
@@ -223,36 +176,30 @@ form{
     border-bottom: 2px solid white;
 }
 
+.check-condition-reg{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .buttons-reg{
     width: 300px;
     display: flex;
     justify-content: space-between;
 }
 
-button[type="submit"],
-button[type="reset"]{
+#regBtn,
+#clrRegBtn{
     width: 120px;
     height: 30px;
     border-radius: 10px;
     border: none;
 }
 
-button[type="submit"]:hover,
-button[type="reset"]:hover{
+#regBtn:hover,
+#clrRegBtn:hover{
     cursor: pointer;
-}
-
-label{
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input{
-    width: 300px;
-    height: 20px;
-    border: none;
-    outline: none;
-    background: transparent;
 }
 
 #closeRegBtn{
@@ -277,6 +224,50 @@ input{
 }
 
 #closeRegBtn:hover, #minimizeRegBtn:hover{
+    cursor: pointer;
+}
+
+/* end */
+
+/* Minimalized register container */
+
+.min-reg-container{
+    width: 250px;
+    height: 30px;
+    background-color: grey;
+    display: none;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.min-reg-container span{
+    width: 190px;
+    text-align: center;
+}
+
+.min-reg-container .buttons{
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#maximizeRegBtn, #minCloseRegBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    border-left: 1px solid black;
+}
+
+#maximizeRegBtn:hover, #minCloseRegBtn:hover{
     cursor: pointer;
 }
 
@@ -347,30 +338,17 @@ form{
     justify-content: space-between;
 }
 
-button[type="submit"],
-button[type="reset"]{
+#logBtn,
+#clrLogBtn{
     width: 120px;
     height: 30px;
     border-radius: 10px;
     border: none;
 }
 
-button[type="submit"]:hover,
-button[type="reset"]:hover{
+#logBtn:hover,
+#clrLogBtn:hover{
     cursor: pointer;
-}
-
-label{
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input{
-    width: 300px;
-    height: 20px;
-    border: none;
-    outline: none;
-    background: transparent;
 }
 
 #closeLogBtn{
@@ -395,6 +373,50 @@ input{
 }
 
 #closeLogBtn:hover, #minimizeLogBtn:hover{
+    cursor: pointer;
+}
+
+/* end */
+
+/* Minimalized login container */
+
+.min-log-container{
+    width: 250px;
+    height: 30px;
+    background-color: grey;
+    display: none;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.min-log-container span{
+    width: 190px;
+    text-align: center;
+}
+
+.min-log-container .buttons{
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#maximizeLogBtn, #minCloseLogBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    border-left: 1px solid black;
+}
+
+#maximizeLogBtn:hover, #minCloseLogBtn:hover{
     cursor: pointer;
 }
 

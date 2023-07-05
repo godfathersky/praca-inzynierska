@@ -35,7 +35,7 @@ main{
     background-color: var(--bg-color)
 }
 
-main h1, h2{
+main h1, main h2{
     text-align: center;
 }
 
@@ -77,66 +77,7 @@ main h2{
     margin-left: 5px;
 }
 
-/* Media queries */
-
-/* Mobile phone */
-@media (max-width: 479px){
-    main{
-        width: 100vw;
-        height: 100vh;
-        font-size: .8rem;
-    }
-
-    .start-panel{
-        justify-content: center;
-        width: 100%;
-        height: 75%;
-    }
-
-    .start-panel h2{
-        margin-top: 0;
-    }
-
-    .start-panel > *:not(:last-child){
-        margin-bottom: 8%;
-    }
-
-    .start-panel img{
-        width: 90%;
-    }
-}
-
-/* Tablet */
-@media (min-width: 480px) and (max-width: 959px){
-    main{
-        width: 75vw;
-        height: 500px;
-        padding: 30px;
-        font-size: .75rem;
-    }
-
-    .start-panel img{
-        width: 75%;
-    }
-}
-
-/* PC */
-@media (min-width: 960px){
-    main{
-        width: 45vw;
-        height: 50vh;
-        padding: 30px;
-    }
-
-    .start-panel img{
-        width: 75%;
-    }
-}
-
-/* end */
-
 /* Labels & Inputs */
-
 label{
     font-weight: bold;
     margin-bottom: 5px;
@@ -158,7 +99,6 @@ input:not([type="checkbox"]){
 /* end */
 
 /* Register modal */
-
 .reg-container{
     width: 900px;
     height: 600px;
@@ -272,7 +212,6 @@ form{
 /* end */
 
 /* Minimalized register container */
-
 .min-reg-container{
     width: 250px;
     height: 30px;
@@ -316,7 +255,6 @@ form{
 /* end */
 
 /* Login modal */
-
 .log-container{
     width: 900px;
     height: 600px;
@@ -421,7 +359,6 @@ form{
 /* end */
 
 /* Minimalized login container */
-
 .min-log-container{
     width: 250px;
     height: 30px;
@@ -460,6 +397,66 @@ form{
 
 #maximizeLogBtn:hover, #minCloseLogBtn:hover{
     cursor: pointer;
+}
+
+/* end */
+
+/* Media queries */
+@media (max-width: 479px){
+    main{
+        width: 100vw;
+        height: 100vh;
+        font-size: .8rem;
+    }
+
+    .start-panel{
+        justify-content: center;
+        width: 100%;
+        height: 75%;
+    }
+
+    .start-panel h2{
+        margin-top: 0;
+    }
+
+    .start-panel > *:not(:last-child){
+        margin-bottom: 8%;
+    }
+
+    .start-panel img{
+        width: 90%;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 959px){
+    main{
+        width: 100vw;
+        height: 100vh;
+        font-size: .7rem;
+    }
+
+    .start-panel{
+        justify-content: center;
+        width: 100%;
+        height: 75%;
+    }
+
+    .start-panel img{
+        width: 70%;
+    }
+}
+
+@media (min-width: 960px){
+    main{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .start-panel{
+        justify-content: center;
+        width: 100%;
+        height: 75%;
+    }
 }
 
 /* end */

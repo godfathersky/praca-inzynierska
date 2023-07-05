@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const startContainer = document.getElementsByTagName("main")[0];
+
     function createLogContainer() {
 
         const logContainer = document.createElement('div');
@@ -72,8 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         clrLogBtn.id = 'clrLogBtn';
         clrLogBtn.textContent = 'Wyczyść';
       
-        // Dodawanie elementów do drzewa DOM
-      
         infoDiv.appendChild(image);
         infoDiv.appendChild(infoText);
       
@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             setTimeout(() => {
                 logContainer.style.opacity = "1";
+                startContainer.style.display = "none";
             }, 200);
         });
 
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
             logContainer.style.opacity = "0";
             setTimeout(() => {
                 logContainer.style.display = "none";
+                startContainer.style.display = "flex";
                 resetLoginInputs();
             }, 200);
         });

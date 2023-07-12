@@ -132,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let minLogContainer = document.getElementById("minLogContainer");
         minimizeLogBtn.addEventListener("click", () => {
             logContainer.style.display = "none";
+            startContainer.style.display = "flex";
             minLogContainer.style.display = "flex";
         });
       
@@ -144,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let minCloseLogBtn = document.getElementById("minCloseLogBtn");
         minCloseLogBtn.addEventListener("click", () => {
             minLogContainer.style.display = "none";
+            startContainer.style.display = "flex";
             resetLoginInputs();
         });
 

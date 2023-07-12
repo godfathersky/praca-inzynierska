@@ -201,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let minRegContainer = document.getElementById("minRegContainer");
         minRegBtn.addEventListener("click", () => {
             regContainer.style.display = "none";
+            startContainer.style.display = "flex";
             minRegContainer.style.display = "flex";
         });
     
@@ -212,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
         let minCloseRegBtn = document.getElementById("minCloseRegBtn");
         minCloseRegBtn.addEventListener("click", () => {
+            startContainer.style.display = "flex";
             minRegContainer.style.display = "none";
             resetRegisterInputs();
         });

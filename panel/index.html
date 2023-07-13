@@ -54,24 +54,28 @@
         </div>
     </header>
     <main>
-        <div class="opt-btns">
-            <button class="btn opt-btn">Członkowie</button>
-            <button class="btn opt-btn">Ustawienia</button>
-            <div class="dropdown-opt">
-                <button class="btn opt-btn" onclick="toggleDropdown();">Twoje tablice</button>
-                <div class="dropdown-opt-content" id="dropdownOptContent">
-                    <a href="#">Tablica A</a>
-                    <a href="#">Tablica B</a>
-                    <a href="#">Tablica C</a>
-                    <a href="#">Tablica D</a>
-                    <a href="#">Tablica E</a>
-                    <a href="#">Tablica F</a>
+        <!-- Dodano id 'test' -->
+        <div class="opt-btns" id="test">
+            <div class="top">
+                <button class="btn opt-btn">Członkowie</button>
+                <button class="btn opt-btn">Ustawienia</button>
+                <div class="dropdown-opt">
+                    <button class="btn opt-btn" onclick="toggleDropdown();">Twoje tablice</button>
+                    <div class="dropdown-opt-content" id="dropdownOptContent">
+                        <a href="#">Tablica A</a>
+                        <a href="#">Tablica B</a>
+                        <a href="#">Tablica C</a>
+                        <a href="#">Tablica D</a>
+                        <a href="#">Tablica E</a>
+                        <a href="#">Tablica F</a>
+                    </div>
                 </div>
             </div>
-            <button class="btn arrow-btn" onclick="toggleSideMenu();"><i class="fa-solid fa-circle-arrow-left" style="color: #ffffff;"></i></button>
+            <div class="bottom">
+                <button class="btn arrow-btn" onclick="toggleSideMenu();"><i class="fa-solid fa-circle-arrow-left" style="color: #ffffff;"></i></button>
+            </div>
         </div>
         <div class="board-space">
-
         </div>
     </main>
 </body>

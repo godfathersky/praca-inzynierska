@@ -6,28 +6,73 @@
     <link rel="icon" type="image/png" href="/img/icon.png">
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/093e9ed2f3.js" crossorigin="anonymous"></script>
+    <script src="toggleDropdown.js"></script>
     <title>Panel</title>
 </head>
 <body>
     <nav>
-        <div class="left-side">
+        <div class="app-logo">
             <img src="/img/text4254-4.png" alt="text4254-4">
         </div>
-        <div class="middle-side">
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
+        <div class="nav-btns">
+            <div class="dropdown">
+                <button class="btn nav-btn">Przestrzenie robocze</button>
+                <div class="dropdown-content">
+                    <a href="#">Testowa nazwa przestrzeni roboczej</a>
+                    <a href="#">Testowa nazwa przestrzeni roboczej</a>
+                    <a href="#">Testowa nazwa przestrzeni roboczej</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn nav-btn">Ostatnie</button>
+                <div class="dropdown-content">
+                    <a href="#">Testowa nazwa ostatniej przestrzeni roboczej</a>
+                    <a href="#">Testowa nazwa ostatniej przestrzeni roboczej</a>
+                    <a href="#">Testowa nazwa ostatniej przestrzeni roboczej</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn nav-btn">Ulubione</button>
+                <div class="dropdown-content">
+                    <a href="#">Testowa nazwa ulubionej przestrzeni roboczej</a>
+                    <a href="#">Testowa nazwa ulubionej przestrzeni roboczej</a>
+                    <a href="#">Testowa nazwa ulubionej przestrzeni roboczej</a>
+                </div>
+            </div>
+            <button class="btn nav-btn">Utwórz</button>
         </div>
-        <div class="right-side">
-            <button></button>
+        <div class="usr-action">
+            <button class="btn nav-btn">Wyloguj</button>
         </div>
     </nav>
     <header>
-
+        <div class="workspace-name temp">
+            <span>Nazwa przestrzeni roboczej</span>
+        </div>
+        <div class="table-name temp">
+            <span>Nazwa wybranej tablicy</span>
+        </div>
     </header>
     <main>
-        
+        <div class="opt-btns">
+            <button class="btn opt-btn">Członkowie</button>
+            <button class="btn opt-btn">Ustawienia</button>
+            <div class="dropdown-opt">
+                <button class="btn opt-btn" onclick="toggleDropdown();">Twoje tablice</button>
+                <div class="dropdown-opt-content" id="dropdownOptContent">
+                    <a href="#">Tablica A</a>
+                    <a href="#">Tablica B</a>
+                    <a href="#">Tablica C</a>
+                    <a href="#">Tablica D</a>
+                    <a href="#">Tablica E</a>
+                    <a href="#">Tablica F</a>
+                </div>
+            </div>
+            <button class="btn arrow-btn" onclick="toggleSideMenu();"><i class="fa-solid fa-circle-arrow-left" style="color: #ffffff;"></i></button>
+        </div>
+        <div class="board-space">
+
+        </div>
     </main>
 </body>
 </html>

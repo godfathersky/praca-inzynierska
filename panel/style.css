@@ -164,27 +164,6 @@ main{
     transition-duration: 200ms;
 }
 
-.bottom{
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 5%;
-    padding-right: 25px;
-}
-
-.arrow-btn{
-    background: none;
-}
-
-.fa-circle-arrow-left{
-    scale: 1.8;
-}
-
-.open{
-    animation: slide-to-right 300ms ease-in-out;
-    left: 0%;
-}
-
 .dropdown-opt-content{
     display: none;
     align-items: center;
@@ -198,7 +177,7 @@ main{
     justify-content: flex-start;
 }
 
-.dropdown-opt-content.active{
+.active{
     display: flex;
     animation: slide-down 300ms ease-in-out;
 }
@@ -207,6 +186,31 @@ main{
     text-decoration: none;
     color: black;
     padding: 10px;
+}
+
+.bottom{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 5%;
+    padding-right: 25px;
+}
+
+.open-animation{
+    animation: slide-to-right 300ms ease-in-out;
+    left: 0%;
+}
+
+.close-animation{
+    animation: slide-to-left 300ms ease-in-out;
+}
+
+.arrow-btn{
+    background: none;
+}
+
+.fa-circle-arrow-left, .fa-circle-arrow-right{
+    scale: 1.8;
 }
 
 .board-space{
@@ -237,13 +241,11 @@ main{
     }
 }
 
-/* Dodać obsługę powrotnej animacji */
-
 @keyframes slide-to-left {
     0% {
-        transform: translateX(0);
+        transform: translateX(300px);
     }
     100% {
-        transform: translateX(-300px);
+        transform: translateX(0);
     }
 }

@@ -27,7 +27,7 @@ body{
     align-items: center;
     font-family: 'Roboto', sans-serif;
     color: white;
-    overflow-x: hidden;
+    overflow: hidden;
     margin: auto;
     padding: 0;
     background-color: var(--bg-color);
@@ -214,9 +214,77 @@ main{
 }
 
 .board-space{
-    background-color: lightseagreen;
     width: 97%;
     height: 100%;
+    padding-top: 25px;
+    padding-left: 80px;
+    background-color: lightseagreen;
+}
+
+.list-of-tasks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    min-height: 150px;
+    padding: 0 10px 0 10px;
+    border-radius: 5px;
+    color: black;
+    background-color: grey;
+}
+
+.header-list{
+    width: 330px;
+    height: 15%;
+}
+
+.items-list{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.items-list p{
+    margin: 0;
+}
+
+.task{
+    max-width: 330px;
+    max-height: 150px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
+.color-band{
+    width: 100%;
+    height: 20px;
+    border-radius: 5px 5px 0 0;
+    background-color: red;
+}
+
+.task-content{
+    padding: 5px;
+}
+
+.add-task{
+    width: 330px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.add-task-btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.add-task-btn:hover{
+    background-color: white;
 }
 
 /* Animations */

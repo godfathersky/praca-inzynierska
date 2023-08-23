@@ -252,6 +252,7 @@ main{
 }
 
 .task{
+    min-width: 330px;
     max-width: 330px;
     max-height: 150px;
     margin-bottom: 20px;
@@ -289,7 +290,7 @@ main{
 
 /* Animations */
 
-@keyframes slide-down {
+@keyframes slide-down{
     0% {
         transform: translateY(-10px);
         opacity: 0;
@@ -300,7 +301,7 @@ main{
     }
 }
 
-@keyframes slide-to-right {
+@keyframes slide-to-right{
     0% {
         transform: translateX(-300px);
     }
@@ -309,7 +310,7 @@ main{
     }
 }
 
-@keyframes slide-to-left {
+@keyframes slide-to-left{
     0% {
         transform: translateX(300px);
     }

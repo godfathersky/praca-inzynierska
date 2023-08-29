@@ -13,7 +13,7 @@
 body{
     margin: auto;
     padding: 0;
-    background-color: var(--bg-color);
+    background: linear-gradient(to bottom, var(--bg-color), grey);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -31,8 +31,6 @@ main{
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
-    /* box-shadow: 0px 0px 25px grey, 0 0 15px lightblue; */
-    background-color: var(--bg-color)
 }
 
 main h1, main h2{
@@ -87,6 +85,7 @@ input:not([type="checkbox"]){
     width: 300px;
     height: 20px;
     border: none;
+    border-bottom: 2px solid white;
     outline: none;
     background: transparent;
 }
@@ -155,7 +154,6 @@ form{
     width: 300px;
     display: flex;
     flex-direction: column;
-    border-bottom: 2px solid white;
 }
 
 .check-condition-reg{
@@ -309,7 +307,6 @@ form{
     width: 300px;
     display: flex;
     flex-direction: column;
-    border-bottom: 2px solid white;
 }
 
 .buttons-log{

@@ -22,7 +22,8 @@ export async function loginUser(username, password) {
   
       if (response.ok) {
         console.log(data);
-        location.href="/panel"
+        location.href="/panel";
+        // localStorage.setItem("token",data.token)
         return true;
       }
       else {

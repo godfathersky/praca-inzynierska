@@ -159,11 +159,12 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(`Sending data: ${username}, ${password}`);
         
             loginUser(username, password).then((success) => {
-            if (success) {
-                alert("Logowanie pomyślne!");
-            } else {
-                alert("Logowanie nieudane!");
-            }
+                if (success) {
+                    alert("Logowanie pomyślne!");
+                }
+                else {
+                    alert("Logowanie nieudane!");
+                }
             });
 
             resetLoginInputs();

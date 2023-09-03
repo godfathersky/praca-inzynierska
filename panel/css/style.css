@@ -75,6 +75,10 @@ nav{
     transition-duration: 200ms;
 }
 
+.logout-btn{
+    margin-left: 10px;
+}
+
 .dropdown:hover .dropdown-content{
     display: flex;
     animation: slide-down 300ms ease-in-out;
@@ -321,7 +325,7 @@ main{
 
 
 
-#pageloader {
+/* #pageloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -333,6 +337,6 @@ main{
     line-height: 100vh;
   }
 
-  nav, header, main{
+nav, header, main{
     display: none;
-  }
+} */

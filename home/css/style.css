@@ -217,6 +217,7 @@ form{
     display: none;
     align-items: center;
     position: absolute;
+    border: 1px solid black;
     bottom: 30px;
     left: 30px;
 }
@@ -363,6 +364,7 @@ form{
     display: none;
     align-items: center;
     position: absolute;
+    border: 1px solid black;
     bottom: 30px;
     left: 30px;
 }

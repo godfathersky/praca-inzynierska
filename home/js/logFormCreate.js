@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
+import { loginUser } from './logUser.js';
 
+document.addEventListener("DOMContentLoaded", () => {
     const startContainer = document.getElementsByTagName("main")[0];
 
     function createLogContainer() {
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
         image.src = '/img/text4254-4.png';
         image.alt = 'text4254-4.png';
       
-        const infoText = document.createElement('p');
-        infoText.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.';
+        // const infoText = document.createElement('p');
+        // infoText.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.';
       
         const form = document.createElement('form');
       
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         usernameLogContainer.id = 'usernameLogContainer';
       
         const usernameLabel = document.createElement('label');
-        usernameLabel.htmlFor = 'username';
+        usernameLabel.htmlFor = 'usernameLogInput';
         usernameLabel.textContent = 'Nazwa użytkownika';
       
         const usernameInput = document.createElement('input');
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordLoginContainer.id = 'passwordLoginContainer';
       
         const passwordLabel = document.createElement('label');
-        passwordLabel.htmlFor = 'password';
+        passwordLabel.htmlFor = 'passwordLogInput';
         passwordLabel.textContent = 'Hasło';
       
         const passwordInput = document.createElement('input');
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clrLogBtn.textContent = 'Wyczyść';
       
         infoDiv.appendChild(image);
-        infoDiv.appendChild(infoText);
+        // infoDiv.appendChild(infoText);
       
         loginDiv.appendChild(infoDiv);
         loginDiv.appendChild(form);
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let maxLogBtn = document.getElementById("maximizeLogBtn");
         maxLogBtn.addEventListener("click", () => {
             minLogContainer.style.display = "none";
+            startContainer.style.display = "none";
             logContainer.style.display = "flex";
         });
       
@@ -178,5 +179,3 @@ document.addEventListener("DOMContentLoaded", () => {
     
     createLogContainer();
 });
-
-import { loginUser } from './logUser.js';

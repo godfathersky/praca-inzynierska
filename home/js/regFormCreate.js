@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", function() {
         img.src = "/img/text4254-4.png";
         img.alt = "text4254-4.png";
 
-        const paragraph = document.createElement("p");
-        paragraph.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.";
+        // const paragraph = document.createElement("p");
+        // paragraph.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.";
 
         info.appendChild(img);
-        info.appendChild(paragraph);
+        // info.appendChild(paragraph);
 
         register.appendChild(info);
 
@@ -55,12 +55,12 @@ document.addEventListener("DOMContentLoaded", function() {
         emailRegContainer.id = "emailRegContainer";
 
         const emailLabel = document.createElement("label");
-        emailLabel.setAttribute("for", "email");
+        emailLabel.htmlFor = "emailRegInput";
         emailLabel.textContent = "Adres email";
 
         const emailInput = document.createElement("input");
-        emailInput.setAttribute("type", "email");
-        emailInput.setAttribute("name", "email");
+        emailInput.type = "email";
+        emailInput.name = "email";
         emailInput.id = "emailRegInput";
 
         emailRegContainer.appendChild(emailLabel);
@@ -73,12 +73,12 @@ document.addEventListener("DOMContentLoaded", function() {
         usernameRegContainer.id = "usernameRegContainer";
 
         const usernameLabel = document.createElement("label");
-        usernameLabel.setAttribute("for", "username");
+        usernameLabel.htmlFor = "usernameRegInput";
         usernameLabel.textContent = "Nazwa użytkownika";
 
         const usernameInput = document.createElement("input");
-        usernameInput.setAttribute("type", "text");
-        usernameInput.setAttribute("name", "username");
+        usernameInput.type = "text";
+        usernameInput.name = "username";
         usernameInput.id = "usernameRegInput";
 
         usernameRegContainer.appendChild(usernameLabel);
@@ -91,12 +91,12 @@ document.addEventListener("DOMContentLoaded", function() {
         passwordRegContainer.id = "passwordRegContainer";
 
         const passwordLabel = document.createElement("label");
-        passwordLabel.setAttribute("for", "password");
+        passwordLabel.htmlFor = "passwordRegInput";
         passwordLabel.textContent = "Hasło";
 
         const passwordInput = document.createElement("input");
-        passwordInput.setAttribute("type", "password");
-        passwordInput.setAttribute("name", "password");
+        passwordInput.type = "password";
+        passwordInput.name = "password";
         passwordInput.id = "passwordRegInput";
 
         passwordRegContainer.appendChild(passwordLabel);
@@ -109,12 +109,12 @@ document.addEventListener("DOMContentLoaded", function() {
         rePasswordRegContainer.id = "rePasswordRegContainer";
 
         const rePasswordLabel = document.createElement("label");
-        rePasswordLabel.setAttribute("for", "re-password");
+        rePasswordLabel.htmlFor = "rePasswordRegInput";
         rePasswordLabel.textContent = "Powtórz hasło";
 
         const rePasswordInput = document.createElement("input");
-        rePasswordInput.setAttribute("type", "password");
-        rePasswordInput.setAttribute("name", "re-password");
+        rePasswordInput.type = "password";
+        rePasswordInput.name = "re-password";
         rePasswordInput.id = "rePasswordRegInput";
 
         rePasswordRegContainer.appendChild(rePasswordLabel);
@@ -128,11 +128,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const checkConditionLabel = document.createElement("label");
         checkConditionLabel.setAttribute("for", "check-condition");
+        checkConditionLabel.htmlFor = "checkConditionInput";
         checkConditionLabel.textContent = "Akceptuję wszystkie niezbędne zgody i zezwalam na przetwarzania moich danych osobowych.";
 
         const checkConditionInput = document.createElement("input");
         checkConditionInput.setAttribute("type", "checkbox");
         checkConditionInput.setAttribute("name", "check-condition");
+        checkConditionInput.type = "checkbox";
+        checkConditionInput.name = "check-condition";
         checkConditionInput.id = "checkConditionInput";
 
         checkConditionContainer.appendChild(checkConditionLabel);
@@ -210,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let maxRegBtn = document.getElementById("maximizeRegBtn");
         maxRegBtn.addEventListener("click", () => {
             minRegContainer.style.display = "none";
+            startContainer.style.display = "none";
             regContainer.style.display = "flex";
         });
     

@@ -6,9 +6,10 @@ export async function loginUser(username, password) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          Username: username,
-          Password: password
+          username: username,
+          password: password
         }),
+        credentials: "include"
       });
   
       let data;
@@ -21,7 +22,6 @@ export async function loginUser(username, password) {
       }
   
       if (response.ok) {
-        console.log(data);
         location.href="/panel";
         return true;
       }

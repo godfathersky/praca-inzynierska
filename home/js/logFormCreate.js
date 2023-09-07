@@ -151,22 +151,22 @@ document.addEventListener("DOMContentLoaded", () => {
             resetLoginInputs();
         });
 
-        logBtn.addEventListener("click", event =>{
+        logBtn.addEventListener("click", event => {
             event.preventDefault();
 
             let username = document.getElementById("usernameLogInput").value;
             let password = document.getElementById("passwordLogInput").value;
-            
-            console.log(`Sending data: ${username}, ${password}`);
         
-            loginUser(username, password).then((success) => {
-                if (success) {
-                    alert("Logowanie pomyślne!");
-                }
-                else {
-                    alert("Logowanie nieudane!");
-                }
-            });
+            // loginUser(username, password).then((success) => {
+            //     if (success) {
+            //         alert("Logowanie pomyślne!");
+            //     }
+            //     else {
+            //         alert("Logowanie nieudane!");
+            //     }
+            // });
+
+            loginUser(username, password);
 
             resetLoginInputs();
         });

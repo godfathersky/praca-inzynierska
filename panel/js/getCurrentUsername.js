@@ -1,10 +1,8 @@
-document.addEventListener("DOMContentLoaded", function(){
-  getUserInfo();
-});
+const apiUrl = "https://localhost:7121/api/Users/me";
 
-async function getUserInfo() {
+async function getUserInfo(apiUrl) {
   try {
-    const response = await fetch('https://localhost:7121/api/Users/me', {
+    const response = await fetch(apiUrl, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -17,13 +15,16 @@ async function getUserInfo() {
       const usernameParagraph = document.getElementById("username");
       usernameParagraph.innerText+="Cześć, "+data.username;
     } else if (response.status === 401) {
-      console.log('Unauthorized access. Missing or invalid token.');
+      console.log('Unauthorized: Token is missing or invalid.');
     } else if (response.status === 400) {
-      console.log('Invalid token.');
+      console.log('Bad Request: Invalid token.');
     } else {
-      console.log('Unexpected error:', response.status);
+      console.log('An unknown error occurred.');
     }
+
   } catch (error) {
-    console.error('An error occurred while communicating with the server:', error);
+    console.error('An error occurred:', error);
   }
-};
+}
+
+getUserInfo(apiUrl);

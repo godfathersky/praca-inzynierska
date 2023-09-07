@@ -310,6 +310,11 @@ nav, header, main{
     display: none;
 }
 
+/* Media queries */
+/* @media (min-width: 480px) and (max-width: 839px) */
+
+/* @media (max) */
+
 /* Animations */
 
 @keyframes slide-down{

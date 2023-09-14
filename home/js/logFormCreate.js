@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
             logContainer.style.opacity = "0";
             setTimeout(() => {
                 logContainer.style.display = "none";
+                // logContainer.remove();
                 startContainer.style.display = "flex";
                 resetLoginInputs();
             }, 200);

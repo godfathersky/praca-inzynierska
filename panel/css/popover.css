@@ -1,13 +1,62 @@
 .popover{
-    width: 400px;
-    height: 250px;
-    display: block;
+    width: 20vw;
+    height: 22vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ccc;
+    color: black;
+    padding: 5px;
+    padding-top: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popover-header{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.popover-content{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popover-content textarea{
+    resize: none;
+}
+
+.popover-btns{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.popover-btns button{
+    width: 30%;
+    outline: none;
+    border: none;
+}
+
+#popOverBtnOk{
+    background-color: green;
+}
+
+#popOverBtnCancel{
+    background-color: red;
+}
+
+input[type="color" i]{
+    border: none;
+    outline: none;
 }

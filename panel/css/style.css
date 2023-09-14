@@ -139,10 +139,10 @@ main{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 20%;
+    width: 20vw;
     height: 100%;
     position: fixed;
-    left: -17%;
+    left: -17vw;
     background-color: var(--grey);
 }
 
@@ -160,6 +160,9 @@ main{
 .opt-btn{
     width: 250px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 2px;
     transition-duration: 200ms;
 }
@@ -197,7 +200,7 @@ main{
     justify-content: flex-end;
     width: 100%;
     height: 5%;
-    padding-right: 25px;
+    padding-right: 1.5vw;
 }
 
 .open-animation{
@@ -313,7 +316,19 @@ nav, header, main{
 /* Media queries */
 /* @media (min-width: 480px) and (max-width: 839px) */
 
-/* @media (max) */
+@media (max-width: 1169px){
+    .bottom{
+        padding-right: 1vw;
+    }
+    .opt-btn{
+        width: 15vw;
+        height: 4vh;
+    }
+    .dropdown-opt-content{
+        min-width: 15vw;
+        max-width: 15vw;
+    }
+}
 
 /* Animations */
 
@@ -330,7 +345,7 @@ nav, header, main{
 
 @keyframes slide-to-right{
     0% {
-        transform: translateX(-300px);
+        transform: translateX(-15vw);
     }
     100% {
         transform: translateX(0);
@@ -339,7 +354,7 @@ nav, header, main{
 
 @keyframes slide-to-left{
     0% {
-        transform: translateX(300px);
+        transform: translateX(15vw);
     }
     100% {
         transform: translateX(0);

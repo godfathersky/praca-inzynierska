@@ -66,10 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 popOver.appendChild(popOverBtns);
         
                 document.body.appendChild(popOver);
+
+                clickedAddTaskBtn.disabled = true;
             }
             
             const clickedAddTaskBtnCancel = document.getElementById("popOverBtnCancel");
             clickedAddTaskBtnCancel.addEventListener("click", () => {
+                clickedAddTaskBtn.disabled = false;
                 popOver.remove();
             });
 

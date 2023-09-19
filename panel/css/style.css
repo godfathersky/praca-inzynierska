@@ -20,6 +20,10 @@
     --blue: #4C96EA;
 }
 
+*{
+    box-sizing: border-box;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -40,7 +44,7 @@ nav{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 10%;
 }
 
@@ -144,6 +148,7 @@ main{
     position: fixed;
     left: -17vw;
     background-color: var(--grey);
+    border-top: 1px solid black;
 }
 
 .top{
@@ -199,8 +204,8 @@ main{
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    height: 5%;
-    padding-right: 1.5vw;
+    height: 10%;
+    padding-right: 4%;
 }
 
 .open-animation{
@@ -221,7 +226,7 @@ main{
 }
 
 .board-space{
-    width: 97%;
+    width:100%;
     height: 100%;
     padding-top: 25px;
     padding-left: 80px;
@@ -316,7 +321,105 @@ nav, header, main{
 /* Media queries */
 /* @media (min-width: 480px) and (max-width: 839px) */
 
-@media (max-width: 1169px){
+@media (max-width: 525px){
+    main{
+        flex-direction: column-reverse;
+    }
+
+    .opt-btns{
+        position: unset;
+        width: 100vw;
+        height: 20%;
+        flex-direction: column-reverse;
+    }
+
+    .bottom{
+        justify-content: center;
+    }
+
+    .arrow-btn{
+        rotate: 270deg;
+    }
+
+    .top{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .opt-btn{
+        width: 25%;
+    }
+
+    .dropdown-opt{
+        min-width: 25%;
+    }
+
+    .dropdown-opt .opt-btn{
+        width: 100%;
+    }
+
+    .list-of-tasks{
+        width: 95%;
+    }
+
+    .header-list{
+        width: 100%;
+    }
+
+    .task{
+        min-width: 100%;
+        max-width: 100%;
+        max-height: 30%;
+    }
+
+    .add-task{
+        width: 100%;
+        height: 15%;
+    }
+}
+
+@media (max-width: 785px){
+    .app-logo{
+        width: 80%;
+    }
+
+    .app-logo img{
+        scale: 0.8;
+    }
+
+    .nav-btns{
+        display: none;
+    }
+
+    .logout-btn{
+        width: 40%;
+        height: 40%;
+        border-radius: 50%;
+        background-image: url(/img/power-off-solid_white.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-color: transparent;
+        font-size: 0;
+    }
+
+    header{
+        padding-left: 5%;
+    }
+
+    .workspace-name, .table-name{
+        min-width: 35%;
+        max-width: 40%;
+    }
+
+    .board-space{
+        width: 100%;
+        padding-top: 2%;
+        padding-left: 5%;
+    }
+}
+
+@media (min-width: 1100px) and (max-width: 1169px){
     .bottom{
         padding-right: 1vw;
     }

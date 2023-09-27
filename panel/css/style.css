@@ -18,6 +18,8 @@
     --red-danger: #cc0000;
     --red-danger-hover: #ff0000;
     --blue: #4C96EA;
+    --lightblue: #76B4E3;
+    --gold: #E3B05F;
 }
 
 *{
@@ -230,7 +232,7 @@ main{
     height: 100%;
     padding-top: 25px;
     padding-left: 80px;
-    background-color: lightseagreen;
+    background-color: var(--lightblue);
 }
 
 .list-of-tasks{
@@ -283,6 +285,11 @@ main{
     padding: 5px;
 }
 
+.task-content p{
+    word-break: break-word;
+    white-space: normal;
+}
+
 .add-task{
     width: 330px;
     height: 30px;
@@ -303,26 +310,52 @@ main{
 /* Pageloader */
 
 #pageloader {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(255, 255, 255);
+    background-color: lightgray;
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#pageloader span{
-    border: 16px solid var(--grey);
+#pageloader #span1{
+    border: 18px solid transparent;
     border-radius: 50%;
-    border-top: 16px solid var(--bg-color);
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+    border-top: 18px solid var(--bg-color);
+    width: 200px;
+    height: 200px;
+    -webkit-animation: spin 3.5s linear infinite;
+    animation: spin 3.5s linear infinite;
+}
+
+#pageloader #span2{
+    position: fixed;
+    border: 13px solid transparent;
+    border-radius: 50%;
+    border-top: 13px solid var(--gold);
+    width: 150px;
+    height: 150px;
+    -webkit-animation: spin2 2.5s linear infinite;
+    animation: spin2 2.5s linear infinite;
+}
+
+#pageloader #span3{
+    position: fixed;
+    border: 8px solid transparent;
+    border-radius: 50%;
+    border-top: 8px solid var(--lightblue);
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin3 1.5s linear infinite;
+    animation: spin3 1.5s linear infinite;
+}
+
+#pageloader #span4{
+    position: fixed;
+    font-weight: bold;
+    font-size: x-large;
+    color: var(--bg-color);
 }
 
 nav, header, main{
@@ -330,6 +363,16 @@ nav, header, main{
 }
 
 @keyframes spin {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin2 {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes spin3 {
     0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }

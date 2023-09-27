@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const clickedAddTaskBtnCancel = document.getElementById("popOverBtnCancel");
             clickedAddTaskBtnCancel.addEventListener("click", () => {
                 clickedAddTaskBtn.disabled = false;
+                clickedAddTaskBtn.style.pointerEvents = "none";
                 popOver.remove();
             });
 
@@ -104,6 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     taskDiv.appendChild(taskColorBand);
                     taskDiv.appendChild(taskContent);
                     itemsList.appendChild(taskDiv);
+                    clickedAddTaskBtn.disabled = false;
+                    clickedAddTaskBtn.style.pointerEvents = "auto";
                     popOver.remove();
                 }
             })

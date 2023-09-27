@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+    var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart; // DEPRECATED
     this.setTimeout(function() {
         const pageloader = document.getElementById('pageloader');
         pageloader.style.display = 'none';
@@ -9,5 +10,5 @@ window.addEventListener('load', function() {
         nav.style.display = 'flex';
         header.style.display = 'flex';
         main.style.display = 'flex';
-    }, 5000);
+    }, 5000); // OR loadTime
 });

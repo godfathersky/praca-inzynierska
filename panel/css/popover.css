@@ -28,11 +28,12 @@
     height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .popover-content textarea{
     resize: none;
+    padding: 2%;
 }
 
 .popover-btns{
@@ -56,7 +57,7 @@
     background-color: red;
 }
 
-input[type="color" i]{
+input[type="color"]{
     border: none;
     outline: none;
 }

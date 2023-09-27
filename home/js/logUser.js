@@ -27,6 +27,7 @@ export async function loginUser(username, password) {
       }
       else {
         console.error(data);
+        alert(data)
         return false;
       }
     }

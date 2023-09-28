@@ -1,15 +1,36 @@
+import { addTask } from './addTask.js';
+
 document.addEventListener("DOMContentLoaded", () => {
+
+    function ShowTaskDesc(){
+        const tasks = document.getElementsByClassName("task");
+        for (const task of tasks){
+            task.dataset.clickCount = 0;
+    
+            task.addEventListener('click', function onClick() {
+                let clickCount = parseInt(this.dataset.clickCount, 10);
+                clickCount++;
+                this.dataset.clickCount = clickCount;
+    
+                if (clickCount % 2 === 1){
+                    this.style.backgroundColor = "red";
+                }
+                else{
+                    this.style.backgroundColor = "lightgray";
+                    task.dataset.clickCount = 0;
+                }
+                const elementId = this.id;
+                console.log("Task id: " + elementId + ", Click Count: " + clickCount);
+            });
+        }
+    }
 
     function AddTaskPopOver(){
         const clickedAddTaskBtn = document.getElementById("addTaskBtn");
-        let popOver, popOverContentTextarea, popOverContentInputColor;
+        let popOver, popOverContentInputText, popOverContentTextarea, popOverContentInputColor;
         let taskId = 0;
 
         clickedAddTaskBtn.addEventListener("click", () =>{
-            // Stworzyć popover, w którym będzie możliwość podania danych wejściowych
-            // Wewnątrz powinny znajdować się dwa przyciski "OK" i "CANCEL"
-            // Po włączeniu popover'u należy zablokować korzystanie z reszty treści
-            // Po wciśnięciu obszaru poza elementem popover powinnien on ulec zamknięciu
             const popOverCheckExist = document.getElementById("popoverBlock");
             if(popOverCheckExist !== null){
                 console.log("test");
@@ -27,6 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
         
                 const popOverContent = document.createElement("div");
                 popOverContent.classList.add("popover-content");
+                const popOverContentLabelInputText = document.createElement("label");
+                popOverContentLabelInputText.htmlFor = "addTaskInputText";
+                popOverContentLabelInputText.textContent = "Tytuł zadania:"
+                popOverContentInputText = document.createElement("input");
+                popOverContentInputText.id = "addTaskInputText";
+                popOverContentInputText.name = "input";
+                popOverContentInputText.type = "text";
+                popOverContentInputText.placeholder = "Tytuł zadania...";
+                popOverContentInputText.maxLength = "100";
+                popOverContentInputText.autofocus = true;
+                popOverContentInputText.required = true;
                 const popOverContentLabelTextarea = document.createElement("label");
                 popOverContentLabelTextarea.htmlFor = "addTaskTextarea";
                 popOverContentLabelTextarea.textContent = "Opis zadania:";
@@ -36,15 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 popOverContentTextarea.placeholder = "Opisz zadanie...";
                 popOverContentTextarea.maxLength = "100";
                 popOverContentTextarea.rows = "5";
-                popOverContentTextarea.autofocus = true;
                 popOverContentTextarea.required = true;
                 const popOverContentLabelInputColor = document.createElement("label");
                 popOverContentLabelInputColor.htmlFor = "addTaskInputColor";
-                popOverContentLabelInputColor.textContent = "Wybierz kolor paska";
+                popOverContentLabelInputColor.textContent = "Wybierz kolor okładki:";
                 popOverContentInputColor = document.createElement("input");
                 popOverContentInputColor.type = "color";
                 popOverContentInputColor.id = "addTaskInputColor";
                 popOverContentInputColor.name = "inputColor";
+                popOverContentInputColor.required = true;
+                popOverContent.appendChild(popOverContentLabelInputText);
+                popOverContent.appendChild(popOverContentInputText);
                 popOverContent.appendChild(popOverContentLabelTextarea);
                 popOverContent.appendChild(popOverContentTextarea);
                 popOverContent.appendChild(popOverContentLabelInputColor);
@@ -68,24 +102,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.appendChild(popOver);
 
                 clickedAddTaskBtn.disabled = true;
+                clickedAddTaskBtn.style.pointerEvents = "none";
             }
             
             const clickedAddTaskBtnCancel = document.getElementById("popOverBtnCancel");
             clickedAddTaskBtnCancel.addEventListener("click", () => {
                 clickedAddTaskBtn.disabled = false;
-                clickedAddTaskBtn.style.pointerEvents = "none";
+                clickedAddTaskBtn.style.pointerEvents = "auto";
                 popOver.remove();
             });
 
             const clickedAddTaskBtnOk = document.getElementById("popOverBtnOk");
             clickedAddTaskBtnOk.addEventListener("click", () => {
+                let popOverContentInputTextValue = popOverContentInputText.value.trim();
                 let popOverContentTextareaValue = popOverContentTextarea.value.trim();
                 let popOverContentInputColorValue = popOverContentInputColor.value;
-                if(popOverContentTextareaValue==""){
-                    alert("Uzupełnij pole.")
+                // Konwersja RGB do HEX w celu przechowywania w bazie danych informacji o wybranym kolorze
+                let ConvertedInputColorValue = popOverContentInputColorValue.toString(16);
+                if(popOverContentTextareaValue=="" || popOverContentInputTextValue==""){
+                    alert("Uzupełnij brakujące pola.")
                 }
                 else{
                     let itemsList = document.querySelector(".items-list");
+
                     const taskDiv = document.createElement("div");
                     taskDiv.classList.add("task");
                     taskId++;
@@ -99,15 +138,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     taskContent.classList.add("task-content");
     
                     const p = document.createElement("p");
-                    p.innerText = popOverContentTextareaValue;
+                    p.innerText = popOverContentInputTextValue;
                 
                     taskContent.appendChild(p);
                     taskDiv.appendChild(taskColorBand);
                     taskDiv.appendChild(taskContent);
                     itemsList.appendChild(taskDiv);
-                    clickedAddTaskBtn.disabled = false;
-                    clickedAddTaskBtn.style.pointerEvents = "auto";
-                    popOver.remove();
+
+                    addTask(popOverContentInputTextValue, popOverContentTextareaValue, ConvertedInputColorValue)
+                    .then((success) => {
+                        if (success) {
+                            clickedAddTaskBtn.disabled = false;
+                            clickedAddTaskBtn.style.pointerEvents = "auto";
+                            popOver.remove();
+                        }
+                        else {
+                            alert("Dodawanie zadania nieudane!");
+                        }
+                    });
+
+                    ShowTaskDesc();
                 }
             })
         });

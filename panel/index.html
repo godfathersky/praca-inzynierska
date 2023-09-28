@@ -11,15 +11,15 @@
     <script src="./js/getCurrentUsername.js"></script>
     <script src="./js/pageLoader.js"></script>
     <script src="./js/logOut.js"></script>
-    <script src="./js/popOver.js"></script>
+    <script type="module" src="./js/popOver.js"></script>
     <title>Panel</title>
 </head>
 <body>
     <div id="pageloader">
-        <span id="span1"></span>
-        <span id="span2"></span>
-        <span id="span3"></span>
-        <span id="span4">%</span>
+        <span id="span-loader-1"></span>
+        <span id="span-loader-2"></span>
+        <span id="span-loader-3"></span>
+        <span id="span-loader-percent">%</span>
     </div>
     <nav>
         <div class="app-logo">
@@ -91,7 +91,7 @@
                 <div class="header-list">
                     <h3>Nazwa listy zadań</h3>
                 </div>
-                <div class="items-list">
+                <div class="items-list" id="itemsList">
                     <div class="task" id="task-1">
                         <div class="color-band"></div>
                         <div class="task-content">

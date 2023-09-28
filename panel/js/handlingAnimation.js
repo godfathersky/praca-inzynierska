@@ -1,4 +1,4 @@
-var clickCount = 0;
+let clickCount = 0;
 
 function toggleDropdown(){
     var dropdownContent = document.getElementById('dropdownOptContent');

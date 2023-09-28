@@ -1,7 +1,7 @@
 window.addEventListener('load', function() {
     var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart; // DEPRECATED
     const loadingTime = 5000;
-    const progresstext = document.getElementById('span4');
+    const progresstext = document.getElementById('span-loader-percent');
     let startTime = Date.now();
 
     function updateProgress() {

@@ -319,7 +319,7 @@ main{
     align-items: center;
 }
 
-#pageloader #span1{
+#pageloader #span-loader-1{
     border: 18px solid transparent;
     border-radius: 50%;
     border-top: 18px solid var(--bg-color);
@@ -329,29 +329,29 @@ main{
     animation: spin 3.5s linear infinite;
 }
 
-#pageloader #span2{
+#pageloader #span-loader-2{
     position: fixed;
     border: 13px solid transparent;
     border-radius: 50%;
     border-top: 13px solid var(--gold);
     width: 150px;
     height: 150px;
-    -webkit-animation: spin2 2.5s linear infinite;
-    animation: spin2 2.5s linear infinite;
+    -webkit-animation: spin-reverse 2.5s linear infinite;
+    animation: spin-reverse 2.5s linear infinite;
 }
 
-#pageloader #span3{
+#pageloader #span-loader-3{
     position: fixed;
     border: 8px solid transparent;
     border-radius: 50%;
     border-top: 8px solid var(--lightblue);
     width: 100px;
     height: 100px;
-    -webkit-animation: spin3 1.5s linear infinite;
-    animation: spin3 1.5s linear infinite;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
 }
 
-#pageloader #span4{
+#pageloader #span-loader-percent{
     position: fixed;
     font-weight: bold;
     font-size: x-large;
@@ -367,14 +367,9 @@ nav, header, main{
   100% { transform: rotate(360deg); }
 }
 
-@keyframes spin2 {
+@keyframes spin-reverse {
     0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
-}
-
-@keyframes spin3 {
-    0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* Media queries */

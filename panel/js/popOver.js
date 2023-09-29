@@ -1,29 +1,25 @@
 import { addTask } from './addTask.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+    function ShowTaskDesc(task) {
+        task.dataset.clickCount = 0;
 
-    function ShowTaskDesc(){
-        const tasks = document.getElementsByClassName("task");
-        for (const task of tasks){
-            task.dataset.clickCount = 0;
-    
-            task.addEventListener('click', function onClick() {
-                let clickCount = parseInt(this.dataset.clickCount, 10);
-                clickCount++;
-                this.dataset.clickCount = clickCount;
-    
-                if (clickCount % 2 === 1){
-                    this.style.backgroundColor = "red";
-                }
-                else{
-                    this.style.backgroundColor = "lightgray";
-                    task.dataset.clickCount = 0;
-                }
-                const elementId = this.id;
-                console.log("Task id: " + elementId + ", Click Count: " + clickCount);
-            });
-        }
-    }
+        task.addEventListener('click', function onClick() {
+            let clickCount = parseInt(this.dataset.clickCount, 10);
+            clickCount++;
+            this.dataset.clickCount = clickCount;
+
+            if (clickCount % 2 === 1) {
+                this.style.backgroundColor = "red";
+            }
+            else {
+                this.style.backgroundColor = "lightgray";
+                task.dataset.clickCount = 0;
+            }
+            const elementId = this.id;
+            console.log("Task id: " + elementId + ", Click Count: " + clickCount);
+        });
+    };
 
     function AddTaskPopOver(){
         const clickedAddTaskBtn = document.getElementById("addTaskBtn");
@@ -114,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const clickedAddTaskBtnOk = document.getElementById("popOverBtnOk");
             clickedAddTaskBtnOk.addEventListener("click", () => {
+                let taskDiv = "";
                 let popOverContentInputTextValue = popOverContentInputText.value.trim();
                 let popOverContentTextareaValue = popOverContentTextarea.value.trim();
                 let popOverContentInputColorValue = popOverContentInputColor.value;
@@ -125,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 else{
                     let itemsList = document.querySelector(".items-list");
 
-                    const taskDiv = document.createElement("div");
+                    taskDiv = document.createElement("div");
                     taskDiv.classList.add("task");
                     taskId++;
                     taskDiv.id = "task-"+taskId;
@@ -157,11 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     });
 
-                    ShowTaskDesc();
                 }
-            })
+                ShowTaskDesc(taskDiv);
+            });
         });
     };
-
     AddTaskPopOver();
 });

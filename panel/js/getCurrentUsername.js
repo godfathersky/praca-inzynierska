@@ -1,6 +1,6 @@
 const apiUrl = "https://localhost:7121/api/Users/me";
 
-async function getUserInfo(apiUrl) {
+async function getUserInfo() {
   try {
     const response = await fetch(apiUrl, {
       method: 'GET',
@@ -14,11 +14,14 @@ async function getUserInfo(apiUrl) {
       const data = await response.json();
       const usernameParagraph = document.getElementById("username");
       usernameParagraph.innerText+="Cześć, "+data.username;
-    } else if (response.status === 401) {
+    }
+    else if (response.status === 401) {
       console.log('Unauthorized: Token is missing or invalid.');
-    } else if (response.status === 400) {
+    }
+    else if (response.status === 400) {
       console.log('Bad Request: Invalid token.');
-    } else {
+    }
+    else {
       console.log('An unknown error occurred.');
     }
 
@@ -27,4 +30,4 @@ async function getUserInfo(apiUrl) {
   }
 }
 
-getUserInfo(apiUrl);
+getUserInfo();

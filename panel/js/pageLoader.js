@@ -1,5 +1,4 @@
 window.addEventListener('load', function() {
-    var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart; // DEPRECATED
     const loadingTime = 5000;
     const progresstext = document.getElementById('span-loader-percent');
     let startTime = Date.now();
@@ -23,7 +22,7 @@ window.addEventListener('load', function() {
                 nav.style.display = 'flex';
                 header.style.display = 'flex';
                 main.style.display = 'flex';
-            }, 1000); // OR loadTime
+            }, 1000);
         }
     }
 

@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(){
   const logoutBtn = document.getElementById("logoutBtn");
   logoutBtn.addEventListener("click", function(){
-    logout();
+    logoutUser();
   })
+  logoutExpired();
 })
 
-async function logout() {
+async function logoutUser() {
   fetch('https://localhost:7121/api/Users/logout', {
     method: 'POST',
     headers: {
@@ -20,4 +21,10 @@ async function logout() {
   .catch((error) => {
     console.error("Błąd podczas wylogowania:", error);
   });
+}
+
+function logoutExpired(){
+  setTimeout(function(){
+    logoutUser();
+  },3600*1000);
 }

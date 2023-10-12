@@ -17,16 +17,20 @@ async function getUserInfo() {
     }
     else if (response.status === 401) {
       console.log('Unauthorized: Token is missing or invalid.');
+      location.href="/home";
     }
     else if (response.status === 400) {
       console.log('Bad Request: Invalid token.');
+      location.href="/home";
     }
     else {
       console.log('An unknown error occurred.');
+      location.href="/home";
     }
 
   } catch (error) {
     console.error('An error occurred:', error);
+    location.href="/home";
   }
 }
 

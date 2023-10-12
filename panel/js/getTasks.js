@@ -32,14 +32,18 @@ async function getTasks(){
                     const taskColorBand = document.createElement("div");
                     taskColorBand.classList.add("color-band");
                     taskColorBand.style.backgroundColor = task.colorBandTask;
+
+                    const nameTask = document.createElement("p");
+                    nameTask.innerText = task.nameTask;
             
                     const taskContent = document.createElement("div");
                     taskContent.classList.add("task-content");
+
+                    const descTask = document.createElement("p");
+                    descTask.innerText = task.descTask;
             
-                    const p = document.createElement("p");
-                    p.innerText = task.nameTask;
-            
-                    taskContent.appendChild(p);
+                    taskColorBand.appendChild(nameTask);
+                    taskContent.appendChild(descTask);
                     taskDiv.appendChild(taskColorBand);
                     taskDiv.appendChild(taskContent);
                     itemsList.appendChild(taskDiv);

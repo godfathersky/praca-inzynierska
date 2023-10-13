@@ -1,4 +1,4 @@
-async function getTasks(){
+async function getData(){
     const apiUrlUser = "https://localhost:7121/api/Users/me";
     let loggedInUserId;
     try{
@@ -10,6 +10,10 @@ async function getTasks(){
             }
         });
         if (responseUserID.status === 200) {
+            const data = await response.json();
+            const usernameParagraph = document.getElementById("username");
+            usernameParagraph.innerText+="Cześć, "+data.username;
+
             const userData = await responseUserID.json();
             loggedInUserId = userData.idUser;
 
@@ -53,13 +57,23 @@ async function getTasks(){
                 console.log("BAD RESPONSE 2");
             }
         }
-        else if(responseUserID.status === 400){
-            console.log("BAD RESPONSE 1");
+        else if (response.status === 401) {
+            console.log('Unauthorized: Token is missing or invalid.');
+            location.href="/home";
+        }
+        else if (response.status === 400) {
+            console.log('Bad Request: Invalid token.');
+            location.href="/home";
+        }
+        else {
+            console.log('An unknown error occurred.');
+            location.href="/home";
         }
     }
     catch(error){
         console.error('An error occurred:', error);
+        location.href="/home";
     }
 }
 
-getTasks();
+getData();

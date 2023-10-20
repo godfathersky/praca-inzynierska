@@ -27,8 +27,9 @@ export async function registerUser(username, email, password) {
         console.error(data);
         return false;
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.error('There was a problem with the fetch operation: ', error);
       return false;
     }
-  };
+};

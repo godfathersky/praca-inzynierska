@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/093e9ed2f3.js" crossorigin="anonymous"></script>
     <script src="./js/handlingAnimation.js"></script>
     <script src="./js/getData.js"></script>
-    <script src="./js/pageLoader.js"></script>
+    <!-- <script src="./js/pageLoader.js"></script> -->
     <script src="./js/logOut.js"></script>
     <script type="module" src="./js/popOver.js"></script>
     <title>Panel</title>
@@ -58,12 +58,15 @@
         </div>
     </nav>
     <header>
-        <div class="workspace-name temp">
+        <div class="workspace-name">
+            <span>Przestrzenie robocze</span>
+        </div>
+        <!-- <div class="workspace-name">
             <span>Nazwa przestrzeni roboczej</span>
         </div>
-        <div class="table-name temp">
+        <div class="table-name">
             <span>Nazwa wybranej tablicy</span>
-        </div>
+        </div> -->
     </header>
     <main>
         <div class="opt-btns">
@@ -86,8 +89,12 @@
                 <button class="btn arrow-btn" id="arrowBtn" onclick="toggleSideMenu();"><i id="arrowIcon" class="fa-solid fa-circle-arrow-right" style="color: #ffffff;"></i></button>
             </div>
         </div>
-        <div class="board-space">
-            <div class="list-of-tasks">
+        <div class="main-space">
+            <div class="list-of-workspaces"></div>
+            <div class="add-workspace" id="addWorkspace">
+                <button class="btn add-workspace-btn" id="addWorkspaceBtn">Dodaj przestrzeń</button>
+            </div>
+            <!-- <div class="list-of-tasks">
                 <div class="header-list">
                     <h3>Nazwa listy zadań</h3>
                 </div>
@@ -95,7 +102,7 @@
                 <div class="add-task" id="addTask">
                     <button class="btn add-task-btn" id="addTaskBtn">+</button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
 </body>

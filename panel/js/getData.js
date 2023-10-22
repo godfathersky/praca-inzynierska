@@ -1,8 +1,8 @@
 async function getData(){
     const baseAddress = "https://localhost:7121";
-    const apiUrlUser = `${baseAddress}/api/Users/me`;
     let loggedInUserId;
     try {
+        const apiUrlUser = `${baseAddress}/api/Users/me`;
         const responseUserID = await fetch(apiUrlUser, {
             method: 'GET',
             credentials: 'include',
@@ -29,6 +29,7 @@ async function getData(){
             if(responseWorkspaces.status === 200){
                 const workspacesData = await responseWorkspaces.json();
                 const workspaceList = document.querySelector(".list-of-workspaces");
+                
 
                 workspacesData.forEach(workspacesData => {
                     const workspaceDiv = document.createElement("div");
@@ -45,19 +46,40 @@ async function getData(){
                     workspaceGoTo.classList.add("go-to-workspace");
                     workspaceGoTo.id = "goToWorkspace";
 
-                    const workspaceGoToBtn = document.createElement("button");
-                    workspaceGoToBtn.classList.add("btn","go-to-workspace-btn");
-                    workspaceGoToBtn.id = "goToWorkspaceBtn";
-                    workspaceGoToBtn.textContent = "Dodaj następną przestrzeń"
+                    // const workspaceGoToBtn = document.createElement("button");
+                    // workspaceGoToBtn.classList.add("btn","go-to-workspace-btn");
+                    // workspaceGoToBtn.id = "goToWorkspaceBtn";
+                    // workspaceGoToBtn.textContent = "Otwórz przestrzeń";
 
                     workspaceHeaderDiv.appendChild(workspaceHeaderH3);
                     workspaceDiv.appendChild(workspaceHeaderDiv);
-                    workspaceGoTo.appendChild(workspaceGoToBtn);
+                    // workspaceGoTo.appendChild(workspaceGoToBtn);
                     workspaceDiv.appendChild(workspaceGoTo);
                     workspaceList.appendChild(workspaceDiv);
+                    // goToWorkspace(workspaceDiv);
+
+                    workspaceDiv.addEventListener("click", async function onClick(){
+                        let workspaceId = workspacesData.idUserWorkspace;
+                        let apiUrlBoards = `${baseAddress}/api/Boards/${workspaceId}/board`;
+                        const responseBoards = await fetch(apiUrlBoards, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        if(responseBoards.status === 200){
+                            console.log(responseBoards.ok);
+                            console.log(apiUrlBoards);
+                            // Dodać tworzenie elementów Tablic (forEach)
+                            // Poprawić działanie mechanizmu zależności wyświetlania zawartości (main-space)
+                            // Dopracować layout elementu (main-space)
+                        }
+                    })
                 });
+                
             }
 
+            // Poniższy mechanizm ma zostać użyty w etapie końcowym wyświetlania zadań w tablicach
             // let apiUrlTasks = `${baseAddress}/api/Users/${loggedInUserId}/tasks`;
             // const responseTasks = await fetch(apiUrlTasks, {
             //     method: 'GET',

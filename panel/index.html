@@ -11,7 +11,7 @@
     <script src="./js/getData.js"></script>
     <!-- <script src="./js/pageLoader.js"></script> -->
     <script src="./js/logOut.js"></script>
-    <script type="module" src="./js/popOver.js"></script>
+    <!-- <script type="module" src="./js/popOver.js"></script> -->
     <title>Panel</title>
 </head>
 <body>
@@ -58,15 +58,9 @@
         </div>
     </nav>
     <header>
-        <div class="workspace-name">
-            <span>Przestrzenie robocze</span>
+        <div class="category-name">
+            <span id="nameOfCategory">Przestrzenie robocze</span>
         </div>
-        <!-- <div class="workspace-name">
-            <span>Nazwa przestrzeni roboczej</span>
-        </div>
-        <div class="table-name">
-            <span>Nazwa wybranej tablicy</span>
-        </div> -->
     </header>
     <main>
         <div class="opt-btns">
@@ -89,21 +83,7 @@
                 <button class="btn arrow-btn" id="arrowBtn" onclick="toggleSideMenu();"><i id="arrowIcon" class="fa-solid fa-circle-arrow-right" style="color: #ffffff;"></i></button>
             </div>
         </div>
-        <div class="main-space">
-            <div class="list-of-workspaces"></div>
-            <div class="add-workspace" id="addWorkspace">
-                <button class="btn add-workspace-btn" id="addWorkspaceBtn">Dodaj przestrzeń</button>
-            </div>
-            <!-- <div class="list-of-tasks">
-                <div class="header-list">
-                    <h3>Nazwa listy zadań</h3>
-                </div>
-                <div class="items-list" id="itemsList"></div>
-                <div class="add-task" id="addTask">
-                    <button class="btn add-task-btn" id="addTaskBtn">+</button>
-                </div>
-            </div> -->
-        </div>
+        <div class="main-space"></div>
     </main>
 </body>
 </html>

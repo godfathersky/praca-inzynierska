@@ -1,6 +1,6 @@
-export async function addTask(name, desc, color){
+export async function addTask(name, desc, color, id){
     try {
-        const response = await fetch('https://localhost:7121/api/Utasks/addTask', {
+        const response = await fetch(`https://localhost:7121/api/Utasks/${loggedInUserId}/addTask`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',

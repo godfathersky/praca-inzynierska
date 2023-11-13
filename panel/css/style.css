@@ -230,6 +230,7 @@ main{
     padding-top: 25px;
     padding-left: 80px;
     background-color: var(--lightblue);
+    overflow-y: scroll;
 }
 
 /* Workspaces */
@@ -347,7 +348,7 @@ main{
 
 /* Pageloader */
 
-/* #pageloader {
+#pageLoader {
     width: 100vw;
     height: 100vh;
     background-color: lightgray;
@@ -357,7 +358,7 @@ main{
     align-items: center;
 }
 
-#pageloader #span-loader-1{
+#pageLoader #spanLoader1{
     border: 18px solid transparent;
     border-radius: 50%;
     border-top: 18px solid var(--bg-color);
@@ -367,7 +368,7 @@ main{
     animation: spin 3.5s linear infinite;
 }
 
-#pageloader #span-loader-2{
+#pageLoader #spanLoader2{
     position: fixed;
     border: 13px solid transparent;
     border-radius: 50%;
@@ -378,7 +379,7 @@ main{
     animation: spin-reverse 2.5s linear infinite;
 }
 
-#pageloader #span-loader-3{
+#pageLoader #spanLoader3{
     position: fixed;
     border: 8px solid transparent;
     border-radius: 50%;
@@ -389,7 +390,7 @@ main{
     animation: spin 1.5s linear infinite;
 }
 
-#pageloader #span-loader-percent{
+#pageLoader #spanLoaderPercent{
     position: fixed;
     font-weight: bold;
     font-size: x-large;
@@ -408,7 +409,7 @@ nav, header, main{
 @keyframes spin-reverse {
     0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
-} */
+}
 
 /* Media queries */
 /* @media (min-width: 480px) and (max-width: 839px) */

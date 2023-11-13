@@ -1,4 +1,6 @@
-export async function addTask(name, desc, color, id){
+// Plik do usunięcia
+
+export async function addTask(name, desc, color){
     try {
         const response = await fetch(`https://localhost:7121/api/Utasks/${loggedInUserId}/addTask`, {
             method: 'POST',

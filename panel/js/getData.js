@@ -1,4 +1,3 @@
-
 async function getData(){
     const baseAddress = "https://localhost:7121";
     let loggedInUserId;
@@ -11,7 +10,7 @@ async function getData(){
                 'Content-Type': 'application/json'
             }
         });
-        if (responseUserID.status === 200) {
+        if (responseUserID.ok) {
             const userData = await responseUserID.json();
             const usernameParagraph = document.getElementById("username");
             usernameParagraph.innerText += "Cześć, " + userData.username;
@@ -24,7 +23,17 @@ async function getData(){
                     'Content-Type': 'application/json'
                 }
             });
-            if(responseWorkspaces.status === 200){
+            if(responseWorkspaces.ok){
+
+                // Aktualizacja adresu URL
+                
+                // let currentUrl = new URL(window.location.href);
+                // console.log(currentUrl);
+
+                // currentUrl.searchParams.set("userId", loggedInUserId);
+                // window.history.pushState({}, "", currentUrl);
+                // console.log(currentUrl);
+
                 const workspacesData = await responseWorkspaces.json();
                 const mainSpaceDiv = document.querySelector(".main-space");
 
@@ -43,6 +52,142 @@ async function getData(){
                 addWorkspaceDiv.appendChild(addWorkspaceBtn);
                 mainSpaceDiv.appendChild(listOfWorkspaceDiv);
                 mainSpaceDiv.append(addWorkspaceDiv);
+
+                function AddWorkspacePopOver(){
+                    const clickedAddWorkspaceBtn = document.getElementById("addWorkspaceBtn");
+                    let popOver, popOverContentInputText;
+                    let workspaceId = 0;
+            
+                    clickedAddWorkspaceBtn.addEventListener("click", () =>{
+                        const popOverCheckExist = document.getElementById("popoverBlock");
+                        if(popOverCheckExist !== null){
+                            console.error("popoverBlock already exists");
+                        }
+                        else{
+                            popOver = document.createElement("div");
+                            popOver.classList.add("popover");
+                            popOver.id = ("popoverBlock");
+                    
+                            const popOverHeader = document.createElement("div");
+                            popOverHeader.classList.add("popover-header");
+                            const popOverHeaderTitle = document.createElement("p");
+                            popOverHeaderTitle.textContent = "Dodaj przestrzeń roboczą";
+                            popOverHeader.appendChild(popOverHeaderTitle);
+                    
+                            const popOverContent = document.createElement("div");
+                            popOverContent.classList.add("popover-content");
+                            const popOverContentLabelInputText = document.createElement("label");
+                            popOverContentLabelInputText.htmlFor = "addWorkspaceInputText";
+                            popOverContentLabelInputText.textContent = "Nazwa przestrzeni roboczej:"
+                            popOverContentInputText = document.createElement("input");
+                            popOverContentInputText.id = "addWorkspaceInputText";
+                            popOverContentInputText.name = "input";
+                            popOverContentInputText.type = "text";
+                            popOverContentInputText.placeholder = "Nazwa przestrzeni roboczej...";
+                            popOverContentInputText.maxLength = "100";
+                            popOverContentInputText.autofocus = true;
+                            popOverContentInputText.required = true;
+                            popOverContent.appendChild(popOverContentLabelInputText);
+                            popOverContent.appendChild(popOverContentInputText);
+                    
+                            const popOverBtns = document.createElement("div");
+                            popOverBtns.classList.add("popover-btns");
+                            const popOverBtnOk = document.createElement("button")
+                            popOverBtnOk.id = "popOverBtnOk"
+                            popOverBtnOk.textContent = "OK";
+                            const popOverBtnCancel = document.createElement("button");
+                            popOverBtnCancel.id = "popOverBtnCancel"
+                            popOverBtnCancel.textContent = "CANCEL";
+                            popOverBtns.appendChild(popOverBtnOk);
+                            popOverBtns.appendChild(popOverBtnCancel);
+                    
+                            popOver.appendChild(popOverHeader);
+                            popOver.appendChild(popOverContent);
+                            popOver.appendChild(popOverBtns);
+                    
+                            document.body.appendChild(popOver);
+            
+                            clickedAddWorkspaceBtn.disabled = true;
+                            clickedAddWorkspaceBtn.style.pointerEvents = "none";
+                        }
+                        
+                        const clickedAddWorkspaceBtnCancel = document.getElementById("popOverBtnCancel");
+                        clickedAddWorkspaceBtnCancel.addEventListener("click", () => {
+                            clickedAddWorkspaceBtn.disabled = false;
+                            clickedAddWorkspaceBtn.style.pointerEvents = "auto";
+                            popOver.remove();
+                        });
+            
+                        const clickedAddWorkspaceBtnOk = document.getElementById("popOverBtnOk");
+                        clickedAddWorkspaceBtnOk.addEventListener("click", () => {
+                            let workspaceDiv = "";
+                            let popOverContentInputTextValue = popOverContentInputText.value.trim();
+                            if(popOverContentInputTextValue==""){
+                                alert("Uzupełnij brakujące pola.")
+                            }
+                            else{
+                                let itemsList = document.querySelector(".list-of-workspaces");
+            
+                                workspaceDiv = document.createElement("div");
+                                workspaceDiv.classList.add("workspace");
+                                workspaceId++;
+                                workspaceDiv.id = "workspace-"+workspaceId;
+                            
+                                const workspaceContent = document.createElement("div");
+                                workspaceContent.classList.add("workspace-content");
+                
+                                const h3 = document.createElement("h3");
+                                h3.innerText = popOverContentInputTextValue;
+                            
+                                workspaceContent.appendChild(h3);
+                                workspaceDiv.appendChild(workspaceContent);
+                                itemsList.appendChild(workspaceDiv);
+
+                                async function addWorkspace(name){
+                                    try {
+                                        const response = await fetch(`https://localhost:7121/api/UserWorkspace/${loggedInUserId}/addworkspace`, {
+                                            method: 'POST',
+                                            headers: {
+                                            'Content-Type': 'application/json',
+                                            },
+                                            body: JSON.stringify({
+                                            NameOfUserWorkspace: name
+                                            }),
+                                        });
+                                
+                                        let data;
+                                        const contentType = response.headers.get("content-type");
+                                        if (contentType && contentType.indexOf("application/json") !== -1) {
+                                            data = await response.json();
+                                        }
+                                            else {
+                                            data = await response.text();
+                                        }
+                                    
+                                        if (response.ok) {
+                                            clickedAddWorkspaceBtn.disabled = false;
+                                            clickedAddWorkspaceBtn.style.pointerEvents = "auto";
+                                            popOver.remove();
+                                            return true;
+                                        }
+                                        else {
+                                            console.error(data);
+                                            return false;
+                                        }
+                                    }
+                                    catch (error) {
+                                        console.error('There was a problem with the fetch operation: ', error);
+                                        return false;
+                                    }
+                                };
+
+                                addWorkspace(popOverContentInputTextValue);
+            
+                            }
+                        });
+                    });
+                };
+                AddWorkspacePopOver();
                 
                 workspacesData.forEach(workspacesData => {
                     const workspaceDiv = document.createElement("div");
@@ -55,13 +200,8 @@ async function getData(){
                     const workspaceHeaderH3 = document.createElement("h3");
                     workspaceHeaderH3.innerText = workspacesData.nameOfUserWorkspace;
 
-                    const workspaceGoTo = document.createElement("div");
-                    workspaceGoTo.classList.add("go-to-workspace");
-                    workspaceGoTo.id = "goToWorkspace";
-
                     workspaceHeaderDiv.appendChild(workspaceHeaderH3);
                     workspaceDiv.appendChild(workspaceHeaderDiv);
-                    workspaceDiv.appendChild(workspaceGoTo);
                     listOfWorkspaceDiv.appendChild(workspaceDiv);
 
                     workspaceDiv.addEventListener("click", async function onClick(){
@@ -73,7 +213,8 @@ async function getData(){
                                 'Content-Type': 'application/json'
                             }
                         });
-                        if(responseBoards.status === 200){
+                        if(responseBoards.ok){
+
                             const categoryNameSpan = document.getElementById("nameOfCategory");
                             categoryNameSpan.innerText = `Przestrzeń robocza: ${workspacesData.nameOfUserWorkspace}`;
                             const boardsData = await responseBoards.json();
@@ -107,7 +248,7 @@ async function getData(){
                                             'Content-Type': 'application/json'
                                         }
                                     });
-                                    if (responseTasks.status === 200) {
+                                    if (responseTasks.ok) {
                                         const tasksData = await responseTasks.json();
                                         const categoryNameSpan = document.getElementById("nameOfCategory");
                                         categoryNameSpan.innerText = `Tablica: ${boardsData.nameOfBoard}`;
@@ -299,22 +440,10 @@ async function getData(){
                                                         taskDiv.appendChild(taskColorBand);
                                                         taskDiv.appendChild(taskContent);
                                                         itemsList.appendChild(taskDiv);
-                                    
-                                                        // addTask(popOverContentInputTextValue, popOverContentTextareaValue, ConvertedInputColorValue)
-                                                        // .then((success) => {
-                                                        //     if (success) {
-                                                        //         clickedAddTaskBtn.disabled = false;
-                                                        //         clickedAddTaskBtn.style.pointerEvents = "auto";
-                                                        //         popOver.remove();
-                                                        //     }
-                                                        //     else {
-                                                        //         alert("Dodawanie zadania nieudane!");
-                                                        //     }
-                                                        // });
 
                                                         async function addTask(name, desc, color){
                                                             try {
-                                                                const response = await fetch(`https://localhost:7121/api/Utasks/${loggedInUserId}/addTask`, {
+                                                                const response = await fetch(`https://localhost:7121/api/Utasks/${loggedInUserId}/addtask`, {
                                                                     method: 'POST',
                                                                     headers: {
                                                                     'Content-Type': 'application/json',
@@ -386,7 +515,7 @@ async function getData(){
     }
     catch(error){
         console.error('An error occurred:', error);
-        // location.href="/home";
+        location.href="/home";
     }
 }
 

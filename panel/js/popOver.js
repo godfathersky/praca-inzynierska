@@ -1,5 +1,6 @@
 import { addTask } from './addTask.js';
 
+// Przenieść ShowTaskDesc do pliku getData.js
 document.addEventListener("DOMContentLoaded", () => {
     function ShowTaskDesc(task) {
         task.dataset.clickCount = 0;

@@ -220,9 +220,158 @@ async function getData(){
                             const boardsData = await responseBoards.json();
                             listOfWorkspaceDiv.remove();
                             addWorkspaceDiv.remove();
+
                             const listOfBoardsDiv = document.createElement("div");
                             listOfBoardsDiv.classList.add("list-of-boards");
+
+                            const addBoardDiv = document.createElement("div");
+                            addBoardDiv.classList.add("add-board");
+                            addBoardDiv.id = "addBoard";
+
+                            const addBoardBtn = document.createElement("button");
+                            addBoardBtn.classList.add("btn", "add-board-btn");
+                            addBoardBtn.id = "addBoardBtn";
+                            addBoardBtn.innerText = "Dodaj tablicę";
+
+                            addBoardDiv.appendChild(addBoardBtn);
                             mainSpaceDiv.append(listOfBoardsDiv);
+                            mainSpaceDiv.append(addBoardDiv);
+
+                            function AddBoardPopOver(){
+                                const clickedAddBoardBtn = document.getElementById("addBoardBtn");
+                                let popOver, popOverContentInputText;
+                                let boardId = 0;
+                        
+                                clickedAddBoardBtn.addEventListener("click", () =>{
+                                    const popOverCheckExist = document.getElementById("popoverBlock");
+                                    if(popOverCheckExist !== null){
+                                        console.error("popoverBlock already exists");
+                                    }
+                                    else{
+                                        popOver = document.createElement("div");
+                                        popOver.classList.add("popover");
+                                        popOver.id = ("popoverBlock");
+                                
+                                        const popOverHeader = document.createElement("div");
+                                        popOverHeader.classList.add("popover-header");
+                                        const popOverHeaderTitle = document.createElement("p");
+                                        popOverHeaderTitle.textContent = "Dodaj tablicę";
+                                        popOverHeader.appendChild(popOverHeaderTitle);
+                                
+                                        const popOverContent = document.createElement("div");
+                                        popOverContent.classList.add("popover-content");
+                                        const popOverContentLabelInputText = document.createElement("label");
+                                        popOverContentLabelInputText.htmlFor = "addWorkspaceInputText";
+                                        popOverContentLabelInputText.textContent = "Nazwa tablicy:"
+                                        popOverContentInputText = document.createElement("input");
+                                        popOverContentInputText.id = "addWorkspaceInputText";
+                                        popOverContentInputText.name = "input";
+                                        popOverContentInputText.type = "text";
+                                        popOverContentInputText.placeholder = "Nazwa tablicy...";
+                                        popOverContentInputText.maxLength = "100";
+                                        popOverContentInputText.autofocus = true;
+                                        popOverContentInputText.required = true;
+                                        popOverContent.appendChild(popOverContentLabelInputText);
+                                        popOverContent.appendChild(popOverContentInputText);
+                                
+                                        const popOverBtns = document.createElement("div");
+                                        popOverBtns.classList.add("popover-btns");
+                                        const popOverBtnOk = document.createElement("button")
+                                        popOverBtnOk.id = "popOverBtnOk"
+                                        popOverBtnOk.textContent = "OK";
+                                        const popOverBtnCancel = document.createElement("button");
+                                        popOverBtnCancel.id = "popOverBtnCancel"
+                                        popOverBtnCancel.textContent = "CANCEL";
+                                        popOverBtns.appendChild(popOverBtnOk);
+                                        popOverBtns.appendChild(popOverBtnCancel);
+                                
+                                        popOver.appendChild(popOverHeader);
+                                        popOver.appendChild(popOverContent);
+                                        popOver.appendChild(popOverBtns);
+                                
+                                        document.body.appendChild(popOver);
+                        
+                                        clickedAddBoardBtn.disabled = true;
+                                        clickedAddBoardBtn.style.pointerEvents = "none";
+                                    }
+                                    
+                                    const clickedAddBoardBtnCancel = document.getElementById("popOverBtnCancel");
+                                    clickedAddBoardBtnCancel.addEventListener("click", () => {
+                                        clickedAddBoardBtn.disabled = false;
+                                        clickedAddBoardBtn.style.pointerEvents = "auto";
+                                        popOver.remove();
+                                    });
+                        
+                                    const clickedAddBoardBtnOk = document.getElementById("popOverBtnOk");
+                                    clickedAddBoardBtnOk.addEventListener("click", () => {
+                                        let boardDiv = "";
+                                        let popOverContentInputTextValue = popOverContentInputText.value.trim();
+                                        if(popOverContentInputTextValue==""){
+                                            alert("Uzupełnij brakujące pola.")
+                                        }
+                                        else{
+                                            let itemsList = document.querySelector(".list-of-boards");
+                        
+                                            boardDiv = document.createElement("div");
+                                            boardDiv.classList.add("board");
+                                            boardId++;
+                                            boardDiv.id = "board-"+boardId;
+                                        
+                                            const boardContent = document.createElement("div");
+                                            boardContent.classList.add("board-content");
+                            
+                                            const h3 = document.createElement("h3");
+                                            h3.innerText = popOverContentInputTextValue;
+                                        
+                                            boardContent.appendChild(h3);
+                                            boardDiv.appendChild(boardContent);
+                                            itemsList.appendChild(boardDiv);
+            
+                                            async function addBoard(name){
+                                                try {
+                                                    const response = await fetch(`https://localhost:7121/api/Boards/${workspaceId}/addboard`, {
+                                                        method: 'POST',
+                                                        headers: {
+                                                        'Content-Type': 'application/json',
+                                                        },
+                                                        body: JSON.stringify({
+                                                        nameOfBoard: name
+                                                        }),
+                                                    });
+                                            
+                                                    let data;
+                                                    const contentType = response.headers.get("content-type");
+                                                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                                                        data = await response.json();
+                                                    }
+                                                        else {
+                                                        data = await response.text();
+                                                    }
+                                                
+                                                    if (response.ok) {
+                                                        clickedAddBoardBtn.disabled = false;
+                                                        clickedAddBoardBtn.style.pointerEvents = "auto";
+                                                        popOver.remove();
+                                                        return true;
+                                                    }
+                                                    else {
+                                                        console.error(data);
+                                                        return false;
+                                                    }
+                                                }
+                                                catch (error) {
+                                                    console.error('There was a problem with the fetch operation: ', error);
+                                                    return false;
+                                                }
+                                            };
+            
+                                            addBoard(popOverContentInputTextValue);
+                        
+                                        }
+                                    });
+                                });
+                            };
+                            AddBoardPopOver();
 
                             boardsData.forEach(boardsData =>{
                                 const boardDiv = document.createElement("div");

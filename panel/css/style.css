@@ -253,20 +253,20 @@ main{
     background-color: grey;
 }
 
-.go-to-workspace, .add-workspace{
+.add-workspace, .add-board{
     width: 330px;
     height: 30px;
     margin-bottom: 20px;
 }
 
-.go-to-workspace-btn, .add-workspace-btn{
+.add-workspace-btn, .add-board-btn{
     width: 100%;
     height: 100%;
     border-radius: 5px;
     font-size: 1.5rem;
 }
 
-.go-to-workspace-btn:hover, .add-workspace-btn:hover{
+.add-workspace-btn:hover, .add-board-btn:hover{
     background-color: white;
 }
 

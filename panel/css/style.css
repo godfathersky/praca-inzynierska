@@ -253,20 +253,20 @@ main{
     background-color: grey;
 }
 
-.add-workspace, .add-board{
+.add-workspace, .add-board, .add-task{
     width: 330px;
     height: 30px;
     margin-bottom: 20px;
 }
 
-.add-workspace-btn, .add-board-btn{
+.add-workspace-btn, .add-board-btn, .add-task-btn{
     width: 100%;
     height: 100%;
     border-radius: 5px;
     font-size: 1.5rem;
 }
 
-.add-workspace-btn:hover, .add-board-btn:hover{
+.add-workspace-btn:hover, .add-board-btn:hover, .add-task-btn:hover{
     background-color: white;
 }
 
@@ -275,17 +275,19 @@ main{
 .list-of-tasks{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     width: 350px;
-    padding: 0 10px 0 10px;
+    max-height: 80%;
+    padding: 0 10px;
     border-radius: 5px;
     color: black;
     background-color: grey;
 }
 
 .header-list{
-    width: 330px;
-    height: 15%;
+    width: 100%;
+    height: 10%;
 }
 
 .items-list{

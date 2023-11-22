@@ -214,7 +214,6 @@ async function getData(){
                             }
                         });
                         if(responseBoards.ok){
-
                             const categoryNameSpan = document.getElementById("nameOfCategory");
                             categoryNameSpan.innerText = `Przestrzeń robocza: ${workspacesData.nameOfUserWorkspace}`;
                             const boardsData = await responseBoards.json();
@@ -390,7 +389,8 @@ async function getData(){
 
                                 boardDiv.addEventListener("click", async function onClick(){
                                     // Poniższy mechanizm ma zostać użyty w etapie końcowym wyświetlania zadań w tablicach
-                                    let apiUrlTasks = `${baseAddress}/api/Users/${loggedInUserId}/tasks`;
+                                    let selectedBoardId = boardsData.idBoard;
+                                    let apiUrlTasks = `${baseAddress}/api/Utasks/${selectedBoardId}/task`;
                                     const responseTasks = await fetch(apiUrlTasks, {
                                         method: 'GET',
                                         headers: {
@@ -419,9 +419,10 @@ async function getData(){
                                         addTaskBtn.id = "addTaskBtn";
                                         addTaskBtn.innerText = "+";
                                         headerListDiv.appendChild(headerListH3);
-                                        addTaskDiv.appendChild(addTaskBtn);
                                         listOfTasksDiv.appendChild(headerListDiv);
+                                        addTaskDiv.appendChild(addTaskBtn);
                                         listOfTasksDiv.appendChild(itemsListDiv);
+
                                         tasksData.forEach(tasksData => {
                                             const taskDiv = document.createElement("div");
                                             taskDiv.classList.add("task");
@@ -446,8 +447,10 @@ async function getData(){
                                             taskDiv.appendChild(taskContent);
                                             itemsListDiv.appendChild(taskDiv);
                                         });
+
                                         listOfTasksDiv.appendChild(addTaskDiv);
                                         mainSpaceDiv.appendChild(listOfTasksDiv);
+                                        addBoardDiv.remove();
 
                                         function ShowTaskDesc(task) {
                                             task.dataset.clickCount = 0;
@@ -592,7 +595,7 @@ async function getData(){
 
                                                         async function addTask(name, desc, color){
                                                             try {
-                                                                const response = await fetch(`https://localhost:7121/api/Utasks/${loggedInUserId}/addtask`, {
+                                                                const response = await fetch(`https://localhost:7121/api/Utasks/${loggedInUserId}/${selectedBoardId}/addtask`, {
                                                                     method: 'POST',
                                                                     headers: {
                                                                     'Content-Type': 'application/json',
@@ -600,7 +603,8 @@ async function getData(){
                                                                     body: JSON.stringify({
                                                                     NameTask: name,
                                                                     DescTask: desc,
-                                                                    ColorBandTask: color
+                                                                    ColorBandTask: color,
+                                                                    IdBoard: selectedBoardId
                                                                     }),
                                                                 });
                                                         

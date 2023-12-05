@@ -16,6 +16,7 @@ async function logoutUser() {
   .then(response => response.text())
   .then(data => {
     console.log("Wylogowano:", data);
+    document.cookie = "jwt" + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     location.href="/home";
   })
   .catch((error) => {

@@ -102,12 +102,34 @@ document.addEventListener("DOMContentLoaded", () => {
         logContainer.appendChild(loginDiv);
       
         document.body.appendChild(logContainer);
+
+        function checkCookieExistence(cookieName) {
+            // Split the document.cookie string into individual cookies
+            var cookies = document.cookie.split(';');
+        
+            // Iterate through the cookies to find the one with the specified name
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+        
+                // Check if the cookie starts with the specified name
+                if (cookie.indexOf(cookieName + '=') === 0) {
+                    return true; // Cookie found
+                }
+            }
+        
+            return false; // Cookie not found
+        }
     
         const showLogBtn = document.getElementById("showLogBtn");
         showLogBtn.addEventListener("click", function() {
             logContainer.style.transition = "opacity 500ms";
             logContainer.style.opacity = "0";
             logContainer.style.display = "flex";
+
+            let isCookieExist = checkCookieExistence('jwt');
+            if(isCookieExist){
+                location.href = '/panel';
+            }
             
             setTimeout(() => {
                 logContainer.style.opacity = "1";
@@ -166,8 +188,12 @@ document.addEventListener("DOMContentLoaded", () => {
             //         alert("Logowanie nieudane!");
             //     }
             // });
-
-            loginUser(username, password);
+            
+            // Example usage
+            let isCookieExist = checkCookieExistence('jwt');
+            if (!isCookieExist) {
+                loginUser(username, password);
+            }
 
             resetLoginInputs();
         });

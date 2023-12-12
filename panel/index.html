@@ -2,87 +2,39 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/img/icon.png">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/popover.css">
-    <script src="https://kit.fontawesome.com/093e9ed2f3.js" crossorigin="anonymous"></script>
-    <script src="./js/handlingAnimation.js"></script>
-    <script src="./js/getData.js"></script>
-    <script src="./js/pageLoader.js"></script>
-    <script src="./js/logOut.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel</title>
+    <link rel="stylesheet" href="./css/output.css">
+    <script src="https://kit.fontawesome.com/093e9ed2f3.js" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/logOut.js"></script>
 </head>
-<body>
-    <div id="pageLoader">
-        <span id="spanLoader1"></span>
-        <span id="spanLoader2"></span>
-        <span id="spanLoader3"></span>
-        <span id="spanLoaderPercent">%</span>
+<body class="w-screen h-screen flex flex-col justify-center items-center p-0 m-auto overflow-hidden">
+    <div class="w-screen h-1/10 flex flex-col max-[640px]:h-1/5 max-[640px]:justify-evenly sm:h-1/5 sm:justify-evenly md:justify-evenly lg:justify-evenly xl:flex-row justify-center items-center bg-dark-grey">
+        <div class="w-1/5 flex justify-center max-[640px]:hidden sm:hidden md:hidden lg:hidden xl:flex">
+            <img class="scale-75" src="../img/tick_task_19_09_23_white.png" alt="tick_task_19_09_23_white">
+        </div>
+        <div class="w-3/5 max-[640px]:w-screen sm:w-screen md:w-screen lg:w-screen flex justify-evenly items-center">
+            <button class="w-44 max-[640px]:w-32 max-[640px]:text-xs sm:w-36 sm:text-sm lg:w-48 lg:text-base bg-white p-2 rounded hover:bg-grey hover:text-white duration-200 ease-in-out" id="workspacesBtn">Przestrzenie robocze</button>
+            <button class="w-44 max-[640px]:w-32 max-[640px]:text-xs sm:w-36 sm:text-sm lg:w-48 lg:text-base bg-white p-2 rounded hover:bg-grey hover:text-white duration-200 ease-in-out">Tablice</button>
+            <button class="w-44 max-[640px]:w-32 max-[640px]:text-xs sm:w-36 sm:text-sm lg:w-48 lg:text-base bg-white p-2 rounded hover:bg-grey hover:text-white duration-200 ease-in-out">Członkowie</button>
+            <button class="w-44 max-[640px]:w-32 max-[640px]:text-xs sm:w-36 sm:text-sm lg:w-48 lg:text-base bg-white p-2 rounded hover:bg-grey hover:text-white duration-200 ease-in-out">Utwórz</button>
+        </div>
+        <div class="w-1/5 flex justify-center items-center">
+            <p id="usernameSpan" class="text-white pr-4"></p>
+            <button id="logOutBtn" class="w-10 h-10 flex items-center justify-center bg-white p-2 rounded-full hover:bg-grey hover:text-white duration-200 ease-in-out">
+                <svg class="hover:fill-white duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#000000}</style><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+            </button>
+        </div>
     </div>
-    <nav>
-        <div class="app-logo">
-            <img src="/img/tick_task_19_09_23_white.png" alt="text4254-4">
-        </div>
-        <div class="nav-btns">
-            <div class="dropdown">
-                <button class="btn nav-btn">Przestrzenie robocze</button>
-                <div class="dropdown-content">
-                    <a href="#">Testowa nazwa przestrzeni roboczej</a>
-                    <a href="#">Testowa nazwa przestrzeni roboczej</a>
-                    <a href="#">Testowa nazwa przestrzeni roboczej</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn nav-btn">Ostatnie</button>
-                <div class="dropdown-content">
-                    <a href="#">Testowa nazwa ostatniej przestrzeni roboczej</a>
-                    <a href="#">Testowa nazwa ostatniej przestrzeni roboczej</a>
-                    <a href="#">Testowa nazwa ostatniej przestrzeni roboczej</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn nav-btn">Ulubione</button>
-                <div class="dropdown-content">
-                    <a href="#">Testowa nazwa ulubionej przestrzeni roboczej</a>
-                    <a href="#">Testowa nazwa ulubionej przestrzeni roboczej</a>
-                    <a href="#">Testowa nazwa ulubionej przestrzeni roboczej</a>
-                </div>
-            </div>
-            <button class="btn nav-btn">Utwórz</button>
-        </div>
-        <div class="usr-action">
-            <p id="username"></p>
-            <button class="btn nav-btn logout-btn" id="logoutBtn">Wyloguj</button>
-        </div>
-    </nav>
-    <header>
-        <div class="category-name">
-            <span id="nameOfCategory">Przestrzenie robocze</span>
-        </div>
-    </header>
-    <main>
-        <div class="opt-btns">
-            <div class="top">
-                <button class="btn opt-btn" id="optBtn1">Członkowie</button>
-                <button class="btn opt-btn" id="optBtn2">Ustawienia</button>
-                <div class="dropdown-opt">
-                    <button class="btn opt-btn" id="optBtn3" onclick="toggleDropdown();">Twoje tablice</button>
-                    <div class="dropdown-opt-content" id="dropdownOptContent">
-                        <a href="#">Tablica A</a>
-                        <a href="#">Tablica B</a>
-                        <a href="#">Tablica C</a>
-                        <a href="#">Tablica D</a>
-                        <a href="#">Tablica E</a>
-                        <a href="#">Tablica F</a>
-                    </div>
-                </div>
-            </div>
-            <div class="bottom">
-                <button class="btn arrow-btn" id="arrowBtn" onclick="toggleSideMenu();"><i id="arrowIcon" class="fa-solid fa-circle-arrow-right" style="color: #ffffff;"></i></button>
-            </div>
-        </div>
-        <div class="main-space"></div>
-    </main>
+    <div class="w-screen h-1/20 max-[640px]:text-sm max-[640px]:px-6 flex justify-start items-center px-10">
+        <span id="path"></span>
+    </div>
+    <div id="mainSpace" class="w-screen h-[calc(100%-17%)] h-max[calc(100%-17%)] bg-lightblue p-10 overflow-y-auto md:justify-start">
+        
+    </div>
+    <div class="w-screen h-1/50 max-[640px]:h-1/20 sm:h-1/20 flex justify-center items-center bg-dark-grey text-white text-sm">
+        <span>Robert Zima, Akademia im. Jakuba z Paradyża w Gorzowie Wielkopolskim, 2024</span>
+    </div>
 </body>
 </html>

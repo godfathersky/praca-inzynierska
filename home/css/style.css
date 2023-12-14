@@ -152,8 +152,10 @@ form{
 .password-reg,
 .re-password-reg{
     width: 300px;
+    height: 65px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 }
 
 .check-condition-reg{

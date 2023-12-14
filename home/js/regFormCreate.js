@@ -171,8 +171,8 @@ document.addEventListener("DOMContentLoaded", function() {
             regContainer.style.opacity = "0";
             regContainer.style.display = "flex";
 
-            passwordRegContainer.style.borderBottomColor = "white";
-            rePasswordRegContainer.style.borderBottomColor = "white";
+            passwordInput.style.borderBottomColor = "white";
+            rePasswordInput.style.borderBottomColor = "white";
             setTimeout(() => {
                 regContainer.style.opacity = "1";
                 startContainer.style.display = "none";
@@ -190,6 +190,10 @@ document.addEventListener("DOMContentLoaded", function() {
             passwordInput.value = "";
             rePasswordInput.value = "";
             checkConditionInput.checked = false;
+            emailInput.style.borderBottomColor = "white";
+            usernameInput.style.borderBottomColor = "white";
+            passwordInput.style.borderBottomColor = "white";
+            rePasswordInput.style.borderBottomColor = "white";
         };
     
         closeRegBtn.addEventListener("click", () => {
@@ -229,27 +233,85 @@ document.addEventListener("DOMContentLoaded", function() {
             if (email) {
                 if (validateEmail(email)) {
                     console.log("Email is valid");
-                    emailRegContainer.style.borderBottomColor = "white";
+                    emailInput.style.borderBottomColor = "white";
                 }
                 else {
                     console.log("Email is not valid");
-                    emailRegContainer.style.borderBottomColor = "red";
+                    emailInput.style.borderBottomColor = "red";
                 }
             }
             else {
-                emailRegContainer.style.borderBottomColor = "white";
+                emailInput.style.borderBottomColor = "white";
+            }
+        });
+
+        const spanToolTipUsername = document.createElement("span");
+        spanToolTipUsername.className = "tooltip";
+        spanToolTipUsername.style.display = "none";
+        spanToolTipUsername.style.color = "red";
+        spanToolTipUsername.textContent = "Zakazana nazwa użytkownika!";
+        usernameRegContainer.appendChild(spanToolTipUsername);
+    
+        usernameInput.addEventListener("input", () => {
+            const username = usernameInput.value.trim();
+            let isBannedUsername = {
+                admin: true,
+                root: true,
+                administrator: true,
+                user: true,
+                test: true,
+                example: true,
+                guest: true,
+                moderator: true,
+                superuser: true,
+                superadmin: true,
+                superadministrator: true,
+                supermoderator: true,
+                superuser: true
+            }
+
+            function checkBannedUsername(username){
+                if(isBannedUsername[username]){
+                    spanToolTipUsername.style.display = "inline-block";
+                    return true;
+                }
+                else{
+                    spanToolTipUsername.style.display = "none";
+                    return false;
+                }
+            }
+
+            if(checkBannedUsername(username)){
+                usernameInput.style.borderBottomColor = "red";
+            }
+            else{
+                usernameInput.style.borderBottomColor = "white";
             }
         });
     
-        usernameInput.addEventListener("blur", () => {
-            const username = usernameInput.value.trim();
-            usernameRegContainer.style.borderBottomColor = username === "admin" ? "red" : "white";
-        });
-    
-        rePasswordInput.addEventListener("input", () => {
-            const passwordsMatch = passwordInput.value === rePasswordInput.value;
-            passwordRegContainer.style.borderBottomColor = passwordsMatch ? "white" : "red";
-            rePasswordRegContainer.style.borderBottomColor = passwordsMatch ? "white" : "red";
+        const spanToolTipPassword = document.createElement("span");
+        spanToolTipPassword.className = "tooltip";
+        spanToolTipPassword.style.display = "none";
+        spanToolTipPassword.style.color = "red";
+        spanToolTipPassword.textContent = "Hasło musi zawierać minimum 8 znaków!";
+        passwordRegContainer.appendChild(spanToolTipPassword);
+
+        passwordInput.addEventListener("input", () => {
+            let isPasswordNotValid = passwordInput.value.length < 8;
+            if(isPasswordNotValid){
+                passwordInput.style.borderBottomColor = "red";
+                spanToolTipPassword.style.display = "inline-block";
+            }
+            else{
+                passwordInput.style.borderBottomColor = "white";
+                spanToolTipPassword.style.display = "none";
+
+                rePasswordInput.addEventListener("input", () => {
+                    const passwordsMatch = passwordInput.value === rePasswordInput.value;
+                    passwordInput.style.borderBottomColor = passwordsMatch ? "white" : "red";
+                    rePasswordInput.style.borderBottomColor = passwordsMatch ? "white" : "red";
+                });
+            }
         });
 
         regBtn.addEventListener("click", event =>{
@@ -258,7 +320,29 @@ document.addEventListener("DOMContentLoaded", function() {
             let username = document.getElementById("usernameRegInput").value;
             let email = document.getElementById("emailRegInput").value;
             let password = document.getElementById("passwordRegInput").value;
+            let rePassword = document.getElementById("rePasswordRegInput").value;
+            let checkCondition = document.getElementById("checkConditionInput").checked;
         
+            if(username === "" || email === "" || password === "" || rePassword === "" || checkCondition === false){
+                alert("Wypełnij wszystkie pola!");
+                return;
+            }
+
+            if(email.indexOf("@") === -1){
+                alert("Niepoprawny adres email!");
+                return;
+            }
+
+            if(password !== rePassword){
+                alert("Hasła nie są takie same!");
+                return;
+            }
+
+            if(password.length < 8){
+                alert("Hasło musi zawierać minimum 8 znaków!");
+                return;
+            }
+
             registerUser(username, email, password)
             .then((success) => {
                 if (success) {

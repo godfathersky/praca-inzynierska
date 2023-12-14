@@ -21,7 +21,7 @@ export async function registerUser(username, email, password) {
             data = await response.text();
         }
 
-        if(response.status === 200){
+        if(response.ok){
             return true;
         }
         else{

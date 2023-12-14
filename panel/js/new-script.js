@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
     async function getUserWorkspaces(){
         if (loggedInUserId) {
             mainSpaceDiv.innerHTML = "";
+            mainSpaceDiv.classList.remove("flex");
+            mainSpaceDiv.classList.remove("flex-row");
             const response = await fetch(`${baseAddress}/api/UserWorkspace/${loggedInUserId}/workspace`, {
                 method: 'GET',
                 credentials: 'include',

@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
-  const logoutBtn = document.getElementById("logOutBtn");
-  logoutBtn.addEventListener("click", function(){
-    logoutUser();
-  })
-  logoutExpired();
+const logoutBtn = document.getElementById("logOutBtn");
+logoutBtn.addEventListener("click", function(){
+logoutUser();
+})
+logoutExpired();
 })
 
 async function logoutUser() {

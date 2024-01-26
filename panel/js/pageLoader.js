@@ -16,12 +16,15 @@ window.addEventListener('load', function() {
                 const pageLoader = document.getElementById('pageLoader');
                 pageLoader.style.display = 'none';
               
-                const nav = document.getElementsByTagName('nav')[0];
-                const header = document.getElementsByTagName('header')[0];
-                const main = document.getElementsByTagName('main')[0];
-                nav.style.display = 'flex';
-                header.style.display = 'flex';
-                main.style.display = 'flex';
+                const test1 = document.getElementById('test1');
+                const test2 = document.getElementById('test2');
+                const test3 = document.getElementById('test3');
+                const test4 = document.getElementById('test4');
+
+                test1.style.display = 'flex';
+                test2.style.display = 'flex';
+                test3.style.display = 'flex';
+                test4.style.display = 'flex';
             }, 1000);
         }
     }

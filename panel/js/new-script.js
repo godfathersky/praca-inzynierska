@@ -297,8 +297,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     draggable.classList.add('dragging');
                 });
 
-                draggable.addEventListener('dragend', () => {
+                draggable.addEventListener('dragend', async () => {
                     draggable.classList.remove('dragging');
+                    const idTask = draggable.id;
+                    const idStatus = draggable.parentElement.id.slice(-1);
+                    const response = await fetch(`${baseAddress}/api/Utasks/${idTask}/${idStatus}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+
+                    if(!response.ok){
+                        console.error('There was a problem with the fetch operation: ', error);
+                    }
                 });
             });
 
@@ -548,33 +560,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 const clickedAddWorkspaceBtnOk = document.getElementById("popOverBtnOk");
-                clickedAddWorkspaceBtnOk.addEventListener("click", () => {
+                clickedAddWorkspaceBtnOk.addEventListener("click", async () => {
                     if(popOverContentInputText.value.length > 0){
                         let itemListOfWorkspace;
                         let popOverContentInputTextValue = popOverContentInputText.value.trim();
 
-                        itemListOfWorkspace = document.createElement("li");
-                        let itemListOfWorkspaceClasses = ["h-24 max-[640px]:w-2/5 sm:w-2/5 md:w-1/5 font-bold bg-gray-400 mr-6 mb-6 rounded hover:scale-105 duration-200 ease-in-out"];
-                        itemListOfWorkspace.className = itemListOfWorkspaceClasses;
-                        itemListOfWorkspace.id = "workspace-"+workspaceId;
+                        // itemListOfWorkspace = document.createElement("li");
+                        // let itemListOfWorkspaceClasses = ["h-24 max-[640px]:w-2/5 sm:w-2/5 md:w-1/5 font-bold bg-gray-400 mr-6 mb-6 rounded hover:scale-105 duration-200 ease-in-out"];
+                        // itemListOfWorkspace.className = itemListOfWorkspaceClasses;
 
-                        const btnItemListOfWorkspace = document.createElement("button");
-                        let btnItemListOfWorkspaceClasses = ["w-full h-full flex justify-start px-4 pt-2"];
-                        btnItemListOfWorkspace.className = btnItemListOfWorkspaceClasses;
+                        // const btnItemListOfWorkspace = document.createElement("button");
+                        // let btnItemListOfWorkspaceClasses = ["w-full h-full flex justify-start px-4 pt-2"];
+                        // btnItemListOfWorkspace.className = btnItemListOfWorkspaceClasses;
 
-                        const spanBtnItemListOfWorkspace = document.createElement("span");
-                        spanBtnItemListOfWorkspace.innerText = popOverContentInputTextValue;
+                        // const spanBtnItemListOfWorkspace = document.createElement("span");
+                        // spanBtnItemListOfWorkspace.innerText = popOverContentInputTextValue;
 
-                        btnItemListOfWorkspace.appendChild(spanBtnItemListOfWorkspace);
-                        itemListOfWorkspace.appendChild(btnItemListOfWorkspace);
+                        // btnItemListOfWorkspace.appendChild(spanBtnItemListOfWorkspace);
+                        // itemListOfWorkspace.appendChild(btnItemListOfWorkspace);
 
-                        let itemsListOfWorkspace = document.querySelector("#listOfItems");
-                        let lastItem = itemsListOfWorkspace.lastElementChild;
-                        itemsListOfWorkspace.insertBefore(itemListOfWorkspace, lastItem);
+                        // let itemsListOfWorkspace = document.querySelector("#listOfItems");
+                        // let lastItem = itemsListOfWorkspace.lastElementChild;
+                        // itemsListOfWorkspace.insertBefore(itemListOfWorkspace, lastItem);
                         
-                        addWorkspace(popOverContentInputText.value);
+                        addWorkspace(popOverContentInputTextValue);
 
                         popOver.remove();
+
+                        setTimeout(() => {
+                            getUserWorkspaces();
+                        }, 50);
                     }
                     else{
                         alert("Nazwa przestrzeni roboczej nie może być pusta!");
@@ -658,26 +673,30 @@ document.addEventListener('DOMContentLoaded', function() {
                         let itemListOfBoard;
                         let popOverContentInputTextValue = popOverContentInputText.value.trim();
 
-                        itemListOfBoard = document.createElement("li");
-                        let itemListOfBoardClasses = ["h-24 max-[640px]:w-2/5 sm:w-2/5 md:w-1/5 font-bold bg-gray-400 mr-6 mb-6 rounded hover:scale-105 duration-200 ease-in-out"];
-                        itemListOfBoard.className = itemListOfBoardClasses;
-                        itemListOfBoard.id = "board-"+workspaceId;
+                        // itemListOfBoard = document.createElement("li");
+                        // let itemListOfBoardClasses = ["h-24 max-[640px]:w-2/5 sm:w-2/5 md:w-1/5 font-bold bg-gray-400 mr-6 mb-6 rounded hover:scale-105 duration-200 ease-in-out"];
+                        // itemListOfBoard.className = itemListOfBoardClasses;
+                        // itemListOfBoard.id = "board-"+workspaceId;
 
-                        const btnItemListOfBoard = document.createElement("button");
-                        let btnItemListOfBoardClasses = ["w-full h-full flex justify-start px-4 pt-2"];
-                        btnItemListOfBoard.className = btnItemListOfBoardClasses;
+                        // const btnItemListOfBoard = document.createElement("button");
+                        // let btnItemListOfBoardClasses = ["w-full h-full flex justify-start px-4 pt-2"];
+                        // btnItemListOfBoard.className = btnItemListOfBoardClasses;
 
-                        const spanBtnItemListOfBoard = document.createElement("span");
-                        spanBtnItemListOfBoard.innerText = popOverContentInputTextValue;
+                        // const spanBtnItemListOfBoard = document.createElement("span");
+                        // spanBtnItemListOfBoard.innerText = popOverContentInputTextValue;
 
-                        btnItemListOfBoard.appendChild(spanBtnItemListOfBoard);
-                        itemListOfBoard.appendChild(btnItemListOfBoard);
+                        // btnItemListOfBoard.appendChild(spanBtnItemListOfBoard);
+                        // itemListOfBoard.appendChild(btnItemListOfBoard);
 
-                        let itemsListOfBoard = document.querySelector("#listOfItems");
-                        let lastItem = itemsListOfBoard.lastElementChild;
-                        itemsListOfBoard.insertBefore(itemListOfBoard, lastItem);
+                        // let itemsListOfBoard = document.querySelector("#listOfItems");
+                        // let lastItem = itemsListOfBoard.lastElementChild;
+                        // itemsListOfBoard.insertBefore(itemListOfBoard, lastItem);
                         
                         addBoard(popOverContentInputText.value);
+
+                        setTimeout(() => {
+                            getUserBoards();
+                        }, 50);
 
                         popOver.remove();
                     }
@@ -778,11 +797,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         
             if (response.ok) {
-                const clickedAddBoardBtn = document.getElementById("addTaskBtn");
-                const popOver = document.getElementById("popoverBlock");
-                clickedAddBoardBtn.disabled = false;
-                clickedAddBoardBtn.style.pointerEvents = "auto";
-                popOver.remove();
                 return true;
             }
             else {
@@ -861,6 +875,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const btnStats = document.querySelector("#statsBtn");
     btnStats.addEventListener('click', () =>{
+        if(boardId == null){
+            alert("Wybierz tablicę!");
+            return;
+        }
+
+        if(tasksData.length == 0){
+            alert("Brak zadań w tablicy!");
+            return;
+        }
+        getTasks(boardId).then(() => {
         mainSpaceDiv.innerHTML = "";
         const canvas = document.createElement("canvas");
         canvas.id = "myChart";
@@ -877,22 +901,24 @@ document.addEventListener('DOMContentLoaded', function() {
         let barColors = ["#4CAF50", "#2196F3", "#f44336"];
 
         new Chart("myChart", {
-            type: "doughnut",
-            data: {
-              labels: valueA,
-              datasets: [{
-                backgroundColor: barColors,
-                data: valueB
-              }]
-            },
-            options: {
-              legend: {display: true},
-              title: {
-                display: true,
-                text: "Zadania w tablicy"
-              }
-            }
-          });
+                type: "doughnut",
+                data: {
+                labels: valueA,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: valueB
+                }]
+                },
+                options: {
+                legend: {display: true},
+                title: {
+                    display: true,
+                    text: "Zadania w tablicy"
+                }
+                }
+            });
+        });
+        
     });
 
     getLoggedInUserId();

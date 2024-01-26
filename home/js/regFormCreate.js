@@ -4,6 +4,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const startContainer = document.getElementsByTagName("main")[0];
 
+    const isBannedUsername = {
+        admin: true,
+        root: true,
+        administrator: true,
+        user: true,
+        test: true,
+        example: true,
+        guest: true,
+        moderator: true,
+        superuser: true,
+        superadmin: true,
+        superadministrator: true,
+        supermoderator: true,
+        superuser: true
+    }
+
     function createRegContainer() {
         const regContainer = document.createElement("div");
         regContainer.className = "reg-container";
@@ -27,14 +43,10 @@ document.addEventListener("DOMContentLoaded", function() {
         info.className = "info";
 
         const img = document.createElement("img");
-        img.src = "/img/text4254-4.png";
-        img.alt = "text4254-4.png";
-
-        // const paragraph = document.createElement("p");
-        // paragraph.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.";
+        img.src = "/img/tick_task_19_09_23_white.png";
+        img.alt = "tick_task_19_09_23_white.png";
 
         info.appendChild(img);
-        // info.appendChild(paragraph);
 
         register.appendChild(info);
 
@@ -254,21 +266,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         usernameInput.addEventListener("input", () => {
             const username = usernameInput.value.trim();
-            let isBannedUsername = {
-                admin: true,
-                root: true,
-                administrator: true,
-                user: true,
-                test: true,
-                example: true,
-                guest: true,
-                moderator: true,
-                superuser: true,
-                superadmin: true,
-                superadministrator: true,
-                supermoderator: true,
-                superuser: true
-            }
 
             function checkBannedUsername(username){
                 if(isBannedUsername[username]){

@@ -24,11 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
         infoDiv.classList.add('info');
       
         const image = document.createElement('img');
-        image.src = '/img/text4254-4.png';
-        image.alt = 'text4254-4.png';
-      
-        // const infoText = document.createElement('p');
-        // infoText.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, totam veritatis! Magnam ab ea quis illum soluta quam. Temporibus numquam necessitatibus similique? Accusantium hic consequuntur consectetur. Esse aperiam quo reiciendis.';
+        image.src = '/img/tick_task_19_09_23_white.png';
+        image.alt = 'tick_task_19_09_23_white.png';
       
         const form = document.createElement('form');
       
@@ -108,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             var cookies = document.cookie.split(';');
         
             // Iterate through the cookies to find the one with the specified name
-            for (var i = 0; i < cookies.length; i++) {
+            for (let i = 0; i < cookies.length; i++) {
                 var cookie = cookies[i].trim();
         
                 // Check if the cookie starts with the specified name
@@ -179,15 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let username = document.getElementById("usernameLogInput").value;
             let password = document.getElementById("passwordLogInput").value;
-        
-            // loginUser(username, password).then((success) => {
-            //     if (success) {
-            //         alert("Logowanie pomyślne!");
-            //     }
-            //     else {
-            //         alert("Logowanie nieudane!");
-            //     }
-            // });
             
             // Example usage
             let isCookieExist = checkCookieExistence('jwt');

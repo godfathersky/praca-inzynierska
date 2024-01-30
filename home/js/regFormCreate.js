@@ -244,11 +244,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const email = emailInput.value.trim();
             if (email) {
                 if (validateEmail(email)) {
-                    console.log("Email is valid");
                     emailInput.style.borderBottomColor = "white";
                 }
                 else {
-                    console.log("Email is not valid");
                     emailInput.style.borderBottomColor = "red";
                 }
             }

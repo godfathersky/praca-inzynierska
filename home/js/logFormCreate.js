@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         clrLogBtn.textContent = 'Wyczyść';
       
         infoDiv.appendChild(image);
-        // infoDiv.appendChild(infoText);
       
         loginDiv.appendChild(infoDiv);
         loginDiv.appendChild(form);
@@ -101,20 +100,17 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(logContainer);
 
         function checkCookieExistence(cookieName) {
-            // Split the document.cookie string into individual cookies
             var cookies = document.cookie.split(';');
         
-            // Iterate through the cookies to find the one with the specified name
             for (let i = 0; i < cookies.length; i++) {
                 var cookie = cookies[i].trim();
-        
-                // Check if the cookie starts with the specified name
+
                 if (cookie.indexOf(cookieName + '=') === 0) {
-                    return true; // Cookie found
+                    return true;
                 }
             }
         
-            return false; // Cookie not found
+            return false;
         }
     
         const showLogBtn = document.getElementById("showLogBtn");
@@ -144,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
             logContainer.style.opacity = "0";
             setTimeout(() => {
                 logContainer.style.display = "none";
-                // logContainer.remove();
                 startContainer.style.display = "flex";
                 resetLoginInputs();
             }, 200);

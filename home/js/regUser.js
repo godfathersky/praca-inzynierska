@@ -25,6 +25,7 @@ export async function registerUser(username, email, password) {
             return true;
         }
         else{
+            alert("Nie udało się zarejestrować. Sprawdź czy wprowadziłeś poprawne dane.");
             console.error("An error occurred while registering the user: ", data);
             return false;
         }

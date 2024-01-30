@@ -26,6 +26,7 @@ export async function loginUser(username, password){
             return true;
         }
         else{
+            alert("Nie udało się zalogować. Sprawdź czy wprowadziłeś poprawne dane.");
             console.error("An error occurred while logging in the user: ", data);
             return false;
         }
